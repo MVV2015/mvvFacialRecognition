@@ -46,13 +46,19 @@
             // 
             // currentView
             // 
+            this.currentView.AutoScroll = true;
+            this.currentView.AutoScrollMinSize = new System.Drawing.Size(2, 2);
             this.currentView.DetectionDetails = null;
             this.currentView.FaceIds = null;
             this.currentView.Image = null;
             this.currentView.Location = new System.Drawing.Point(3, 1);
             this.currentView.Name = "currentView";
+            this.currentView.ShowEyes = false;
+            this.currentView.ShowMouth = false;
+            this.currentView.ShowNose = false;
             this.currentView.Size = new System.Drawing.Size(314, 290);
             this.currentView.TabIndex = 2;
+            this.currentView.Zoom = 2F;
             // 
             // mainFeedPictureBox
             // 

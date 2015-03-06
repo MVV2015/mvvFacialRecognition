@@ -25,7 +25,7 @@ namespace mvvFacialRecognition
 
     public partial class mainForm : Form
     {
-        bool useNLView = false;
+        bool useNLView = true;
         const string Components = "Biometrics.FaceExtraction,Devices.Cameras,Biometrics.FaceMatching";
         dbInterface myDdInterface = new dbInterface();
         Draw getfeatures = new Draw();
@@ -155,16 +155,12 @@ namespace mvvFacialRecognition
                     if (currentView.Visible == false)
                     {
                         currentView.Invoke(new Action(() => currentView.Visible = true));
-                        //Action act1 = () => { currentView.Visible = true; };
-                        //this.currentView.Invoke(act1);
                     }
 
                     // remove mainFeedPictureBox to invisible
                     if (mainFeedPictureBox.Visible == true)
                     {
                         mainFeedPictureBox.Invoke(new Action(() => mainFeedPictureBox.Visible = false));
-                        //Action act3 = () => { mainFeedPictureBox.Visible = false; };
-                        //this.mainFeedPictureBox.Invoke(act3);
                     }
 
                     if (templateExtractor.DetectFace(grayscaleImage, out thisFace))
@@ -177,13 +173,13 @@ namespace mvvFacialRecognition
                         //    currentView.BeginInvoke(act3);
                         //    //bmp = getfeatures.drawFaceRectangle(thisFace, bmp, p);
                         //}
-                        Thread.Sleep(500);
+
+                    //    // Pause to see bounding box
+                    //    Thread.Sleep(250);
                     }
 
                     // Set image to currentView
                     currentView.Invoke(new Action(() =>currentView.Image=bmp));
-                    //Action act2 = () => { currentView.Image = bmp; };
-                    //this.currentView.Invoke(act2);
 
                 }
 
@@ -213,6 +209,9 @@ namespace mvvFacialRecognition
 
                     // display image on pictureBox
                     mainFeedPictureBox.Invoke(new Action(() => mainFeedPictureBox.Image = bmp));
+
+                    //// pause to see bounding box
+                    //Thread.Sleep(250);
                 }
                 if (matchDelay == framesBetweenSample)
                 {
@@ -315,13 +314,15 @@ namespace mvvFacialRecognition
                     this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
                     this.WindowState = FormWindowState.Normal;
                     // resize display boxes
-                    mainFeedPictureBox.Location = new Point(100, 100);
-                    mainFeedPictureBox.Height = 250;
-                    mainFeedPictureBox.Width = 320;
+                    // Image Size = {Width = 640 Height = 480}
+                    mainFeedPictureBox.Location = new Point(100, 110);
+                    mainFeedPictureBox.Width = 480;
+                    mainFeedPictureBox.Height = 360;
 
                     currentView.Location = new Point(100, 110);
-                    currentView.Height = 250;
-                    currentView.Width = 320;
+                    currentView.Width = 480;
+                    currentView.Height = 360;
+                    currentView.Zoom = (float).75;
 
                     operationsTabControl.Visible = true;
                     
@@ -334,26 +335,35 @@ namespace mvvFacialRecognition
                     this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
 
                     // enlarge display boxes
+                    //Screen dimentions = {Width = 1456 Height = 916}
                     mainFeedPictureBox.Location = new Point(0, 0);
                     mainFeedPictureBox.Height = this.Height;
                     mainFeedPictureBox.Width = this.Width;
 
                     currentView.Location = new Point(0, 0);
-                    currentView.Height = this.Height;
-                    currentView.Width = this.Width;
-                    currentView.Zoom = 1;
+                    currentView.Height = 900;
+                    currentView.Width = 1200;
+                    //currentView.Height = this.Height;
+                    //currentView.Width = this.Width;
+                    currentView.Zoom = 2;
 
                     operationsTabControl.Visible = false;
                 }
             }
-            if (e.KeyData == Keys.B)
+            else if (e.KeyData == Keys.B)
             {
                 if (boundingBoxOn)
                 { boundingBoxOn = false; }
                 else
                 { boundingBoxOn = true; }
             }
-
+            else if (e.KeyData == Keys.N)
+            {
+                if (useNLView)
+                { useNLView = false; }
+                else
+                { useNLView = true; }
+            }
         }
 
         private void bitmapSelectButton_CheckedChanged(object sender, EventArgs e)
