@@ -48,7 +48,6 @@
             // 
             this.currentView.DetectionDetails = null;
             this.currentView.FaceIds = null;
-            this.currentView.FaceRectangleWidth = 4;
             this.currentView.Image = null;
             this.currentView.Location = new System.Drawing.Point(1, 0);
             this.currentView.Name = "currentView";

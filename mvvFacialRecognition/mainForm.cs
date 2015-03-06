@@ -30,7 +30,7 @@ namespace mvvFacialRecognition
         dbInterface myDdInterface = new dbInterface();
         Draw getfeatures = new Draw();
         bool isLive = false;
-        bool markEyes = true;
+        bool markEyes = true; 
         bool fullScreen = true;
         bool boundingBoxOn = true;
         static int frameRate = 25; // Set video frame rate here.
@@ -41,9 +41,8 @@ namespace mvvFacialRecognition
         NGrayscaleImage grayscaleImage = null;
         NleFace thisFace;
         NLExtractor templateExtractor = new NLExtractor();
-        NLAttributes[] detectionDetails;// for NLView
         NLAttributes details;// for NLExtractor and NleFace
-        NBiometricStatus extractionStatus;// = NBiometricStatus.None;
+        NBiometricStatus extractionStatus = NBiometricStatus.None;
         NLTemplate facialTemplate = null;
         Bitmap capturedImage = null;
         Bitmap bmp = null;
@@ -60,13 +59,11 @@ namespace mvvFacialRecognition
             operationsTabControl.SelectedIndexChanged += new EventHandler(operationsTabControl_SelectedIndexChanged);
             //userIdDropDown.SelectionChangeCommitted += new EventHandler(userIdSelected);
             NDeviceManager devMan = new NDeviceManager(NDeviceType.Camera, true, false, System.Threading.SynchronizationContext.Current);
-            checkForCamera(devMan);
-           
+            checkForCamera(devMan);           
         }
 
         private void mainForm_Load(object sender, EventArgs e)
         {
-            
             // set initial form state
             operationsTabControl.Visible = false;
             this.WindowState = FormWindowState.Maximized;
@@ -87,7 +84,6 @@ namespace mvvFacialRecognition
             // start the video feed
             if (camera != null)
             {
-                //currentView.Visible = true;
                 // Start live feed
                 isLive = true;
                 myThread = new Thread(getLiveVideo);
@@ -129,8 +125,10 @@ namespace mvvFacialRecognition
         {  // what if the camera is disconnected during feed?
             verifyLicense();
             templateExtractor.TemplateSize = NleTemplateSize.Large;
-            templateExtractor.DetectAllFeaturePoints = true;// If false, will only detect eyes.
-            templateExtractor.FavorLargestFace = true;// Causes extraction of details only on the largest face?
+            templateExtractor.DetectAllFeaturePoints = true;
+            // False, will only detect eyes.
+            templateExtractor.FavorLargestFace = true;
+            // Extract details only on the largest face
             camera.StartCapturing();
             
             //create graphics object
@@ -144,7 +142,6 @@ namespace mvvFacialRecognition
 
             while (isLive == true)
             {
-                //useNLView = false;
                 timer.Start();
                 currentImage = camera.GetFrame();
                 currentImage.FlipHorizontally();
@@ -179,10 +176,7 @@ namespace mvvFacialRecognition
                         //    currentView.BeginInvoke(act3);
                         //    //bmp = getfeatures.drawFaceRectangle(thisFace, bmp, p);
                         //}
-                        if (markEyes)
-                        {
-
-                        }
+                        Thread.Sleep(500);
                     }
 
                     // Set image to currentView
@@ -219,7 +213,6 @@ namespace mvvFacialRecognition
                     Action act = () => { mainFeedPictureBox.Image = bmp; };
                     mainFeedPictureBox.Invoke(act);
                 }
-
                 if (matchDelay == framesBetweenSample)
                 {
                     // Should I shut off face detection while matching?
