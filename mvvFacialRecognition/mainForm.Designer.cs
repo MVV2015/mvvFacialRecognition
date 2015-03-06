@@ -49,9 +49,9 @@
             this.currentView.DetectionDetails = null;
             this.currentView.FaceIds = null;
             this.currentView.Image = null;
-            this.currentView.Location = new System.Drawing.Point(1, 0);
+            this.currentView.Location = new System.Drawing.Point(3, 1);
             this.currentView.Name = "currentView";
-            this.currentView.Size = new System.Drawing.Size(314, 291);
+            this.currentView.Size = new System.Drawing.Size(314, 290);
             this.currentView.TabIndex = 2;
             // 
             // mainFeedPictureBox
@@ -107,6 +107,7 @@
             this.bitmapSelectButton.TabStop = true;
             this.bitmapSelectButton.Text = "Bitmap View";
             this.bitmapSelectButton.UseVisualStyleBackColor = true;
+            this.bitmapSelectButton.CheckedChanged += new System.EventHandler(this.bitmapSelectButton_CheckedChanged);
             // 
             // NlViewSelectButton
             // 
@@ -119,6 +120,7 @@
             this.NlViewSelectButton.TabStop = true;
             this.NlViewSelectButton.Text = "NlView";
             this.NlViewSelectButton.UseVisualStyleBackColor = true;
+            this.NlViewSelectButton.CheckedChanged += new System.EventHandler(this.NlViewSelectButton_CheckedChanged);
             // 
             // userIdDropDown
             // 
@@ -155,6 +157,7 @@
             this.ClientSize = new System.Drawing.Size(910, 621);
             this.Controls.Add(this.operationsTabControl);
             this.Controls.Add(this.currentView);
+            this.Controls.Add(this.mainFeedPictureBox);
             this.Name = "mainForm";
             this.Text = "Main Display";
             this.Load += new System.EventHandler(this.mainForm_Load);

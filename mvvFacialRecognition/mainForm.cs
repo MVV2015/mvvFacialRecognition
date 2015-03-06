@@ -25,7 +25,7 @@ namespace mvvFacialRecognition
 
     public partial class mainForm : Form
     {
-        bool useNLView = true;
+        bool useNLView = false;
         const string Components = "Biometrics.FaceExtraction,Devices.Cameras,Biometrics.FaceMatching";
         dbInterface myDdInterface = new dbInterface();
         Draw getfeatures = new Draw();
@@ -125,7 +125,7 @@ namespace mvvFacialRecognition
         {  // what if the camera is disconnected during feed?
             verifyLicense();
             templateExtractor.TemplateSize = NleTemplateSize.Large;
-            templateExtractor.DetectAllFeaturePoints = true;
+            templateExtractor.DetectAllFeaturePoints = false;
             // False, will only detect eyes.
             templateExtractor.FavorLargestFace = true;
             // Extract details only on the largest face
@@ -152,19 +152,20 @@ namespace mvvFacialRecognition
                 //{
                 if (useNLView)
                 {
-                    //if (currentView.Visible == false)
-                    //{
-                    //    Action act1 = () => { currentView.Visible = true; };
-                    //    this.currentView.Invoke(act1);
-                    //}
+                    if (currentView.Visible == false)
+                    {
+                        currentView.Invoke(new Action(() => currentView.Visible = true));
+                        //Action act1 = () => { currentView.Visible = true; };
+                        //this.currentView.Invoke(act1);
+                    }
 
-                    //// remove mainFeedPictureBox to invisible
-                    //if (mainFeedPictureBox.Visible == true)
-                    //{
-                    //    //mainFeedPictureBox.Visible = false;
-                    //    Action act3 = () => { mainFeedPictureBox.Visible = false; };
-                    //    this.mainFeedPictureBox.Invoke(act3);
-                    //}
+                    // remove mainFeedPictureBox to invisible
+                    if (mainFeedPictureBox.Visible == true)
+                    {
+                        mainFeedPictureBox.Invoke(new Action(() => mainFeedPictureBox.Visible = false));
+                        //Action act3 = () => { mainFeedPictureBox.Visible = false; };
+                        //this.mainFeedPictureBox.Invoke(act3);
+                    }
 
                     if (templateExtractor.DetectFace(grayscaleImage, out thisFace))
                     {
@@ -180,26 +181,26 @@ namespace mvvFacialRecognition
                     }
 
                     // Set image to currentView
-                    Action act2 = () => { currentView.Image = bmp; };
-                    this.currentView.Invoke(act2);
+                    currentView.Invoke(new Action(() =>currentView.Image=bmp));
+                    //Action act2 = () => { currentView.Image = bmp; };
+                    //this.currentView.Invoke(act2);
 
                 }
 
                 if (!useNLView)
                 {
-                    //// make currentView invisible
-                    //if (currentView.Visible == true)
-                    //{
-                    //    currentView.Invoke(new Action(()=>currentView.Visible = false));
-                    //    //Action act1 = () => { this.currentView.Visible = false; };
-                    //    //this.currentView.Invoke(act1);
-                    //}
-                    //// make mainFeedPictureBox visible
-                    //if (mainFeedPictureBox.Visible == false)
-                    //{
-                    //    Action act3 = () => { mainFeedPictureBox.Visible = true; };
-                    //    this.mainFeedPictureBox.Invoke(act3);
-                    //}
+                    // make currentView invisible
+                    if (currentView.Visible == true)
+                    {
+                        currentView.Invoke(new Action(() => currentView.Visible = false));
+                    }
+                    // make mainFeedPictureBox visible
+                    if (mainFeedPictureBox.Visible == false)
+                    {
+                        mainFeedPictureBox.Invoke(new Action(() => mainFeedPictureBox.Visible = true));
+                        //Action act3 = () => { mainFeedPictureBox.Visible = true; };
+                        //this.mainFeedPictureBox.Invoke(act3);
+                    }
 
                     if (templateExtractor.DetectFace(grayscaleImage, out thisFace))
                     {
@@ -209,9 +210,9 @@ namespace mvvFacialRecognition
                             bmp = getfeatures.drawFaceRectangle(thisFace, bmp, p);
                         }
                     }
+
                     // display image on pictureBox
-                    Action act = () => { mainFeedPictureBox.Image = bmp; };
-                    mainFeedPictureBox.Invoke(act);
+                    mainFeedPictureBox.Invoke(new Action(() => mainFeedPictureBox.Image = bmp));
                 }
                 if (matchDelay == framesBetweenSample)
                 {
@@ -355,16 +356,20 @@ namespace mvvFacialRecognition
 
         }
 
-        //private void NlefaceSelectButton_CheckedChanged(object sender, EventArgs e)
-        //{
-        //    if (NlViewSelectButton.Checked)
-        //    {
-        //        this.useNLView = true;
-        //    }
-        //    else
-        //    {
-        //        this.useNLView = false;
-        //    }
-        //}
+        private void bitmapSelectButton_CheckedChanged(object sender, EventArgs e)
+        {
+            if (bitmapSelectButton.Checked)
+            {
+                useNLView = false;
+            }
+        }
+
+        private void NlViewSelectButton_CheckedChanged(object sender, EventArgs e)
+        {
+            if (NlViewSelectButton.Checked)
+            {
+                this.useNLView = true;
+            }
+        }
     }
 }
