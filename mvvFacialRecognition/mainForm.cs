@@ -28,9 +28,8 @@ namespace mvvFacialRecognition
         bool useNLView = true;
         const string Components = "Biometrics.FaceExtraction,Devices.Cameras,Biometrics.FaceMatching";
         dbInterface myDdInterface = new dbInterface();
-        Draw getfeatures = new Draw();
         bool isLive = false;
-        bool markEyes = true; 
+        bool markEyes = false; 
         bool fullScreen = true;
         bool boundingBoxOn = true;
         static int frameRate = 25; // Set video frame rate here.
@@ -133,7 +132,7 @@ namespace mvvFacialRecognition
             
             //create graphics object
             Brush b = new SolidBrush(currentView.FaceRectangleColor);
-            Pen p = new Pen(b,2);
+            Pen p = new Pen(b,1);
             var timer = new System.Diagnostics.Stopwatch();
             int timeSpan;
             int elapsed = 0;
@@ -146,8 +145,11 @@ namespace mvvFacialRecognition
                 currentImage = camera.GetFrame();
                 currentImage.FlipHorizontally();
                 bmp = currentImage.ToBitmap();
+                Draw getfeatures = new Draw(bmp, p);
                 // create grayscale image for template operations
                 grayscaleImage = currentImage.ToGrayscale();
+                currentView.DetectionDetails = detectDetails(grayscaleImage);
+
                 //if (fullScreen)
                 //{
                 if (useNLView)
@@ -160,19 +162,23 @@ namespace mvvFacialRecognition
                     // remove mainFeedPictureBox to invisible
                     if (mainFeedPictureBox.Visible == true)
                     {
-                        mainFeedPictureBox.Invoke(new Action(() => mainFeedPictureBox.Visible = false));
+                        if (mainFeedPictureBox.InvokeRequired)
+                        {
+                            mainFeedPictureBox.Invoke(new Action(() => mainFeedPictureBox.Visible = false));
+                        }
+                        else
+                        { mainFeedPictureBox.Visible = false; }
                     }
+                    if (confidenceDisplaybox.InvokeRequired)
+                    {
+                        confidenceDisplaybox.Invoke(new Action(() => confidenceDisplaybox.Visible = false));
+                    }
+                    else
+                    { confidenceDisplaybox.Visible = false; }
 
                     if (templateExtractor.DetectFace(grayscaleImage, out thisFace))
                     {
                         matchDelay++;
-                        currentView.DetectionDetails = detectDetails(grayscaleImage);
-                        //if (boundingBoxOn)
-                        //{
-                        //    Action act3 = () => currentView.DrawToBitmap(bmp,thisFace.Rectangle);
-                        //    currentView.BeginInvoke(act3);
-                        //    //bmp = getfeatures.drawFaceRectangle(thisFace, bmp, p);
-                        //}
 
                     //    // Pause to see bounding box
                     //    Thread.Sleep(250);
@@ -194,16 +200,51 @@ namespace mvvFacialRecognition
                     if (mainFeedPictureBox.Visible == false)
                     {
                         mainFeedPictureBox.Invoke(new Action(() => mainFeedPictureBox.Visible = true));
-                        //Action act3 = () => { mainFeedPictureBox.Visible = true; };
-                        //this.mainFeedPictureBox.Invoke(act3);
                     }
 
+                    // set color of confidenct display text
+                    if (confidenceDisplaybox.InvokeRequired)
+                    {
+                        confidenceDisplaybox.Invoke(new Action(() => confidenceDisplaybox.ForeColor = currentView.FaceRectangleColor));
+                    }
+                    else
+                    {
+                        confidenceDisplaybox.ForeColor = currentView.FaceRectangleColor;
+                    }
                     if (templateExtractor.DetectFace(grayscaleImage, out thisFace))
                     {
                         matchDelay++;
+                        // get location for confidence level text boy
+                        Point locConfText = new Point(thisFace.Rectangle.Bottom, thisFace.Rectangle.Left);
                         if (boundingBoxOn)
                         {
                             bmp = getfeatures.drawFaceRectangle(thisFace, bmp, p);
+                            // turn on face confidence display
+                            if (confidenceDisplaybox.Visible == false)
+                            {
+                                if (confidenceDisplaybox.InvokeRequired)
+                                {
+                                    confidenceDisplaybox.Invoke(new Action(() => confidenceDisplaybox.Visible = true));
+                                }
+                                else
+                                {
+                                    confidenceDisplaybox.Visible = true;
+                                }
+                            }
+                            // insert score as text and relocate the box
+                            if (confidenceDisplaybox.InvokeRequired)
+                                {
+                                    confidenceDisplaybox.Invoke(new Action(() => confidenceDisplaybox.Text = ("Confidence Score: "+((Int16)thisFace.Confidence).ToString())));
+                                    confidenceDisplaybox.Invoke(new Action(() => confidenceDisplaybox.Location = (locConfText)));
+                                }
+                                else
+                                {
+                                    confidenceDisplaybox.Text = thisFace.Confidence.ToString();
+                                }
+                        }
+                        if (markEyes)
+                        {
+                            //bmp = getfeatures.markEyes(thisFace, bmp, p);
                         }
                     }
 
@@ -353,16 +394,25 @@ namespace mvvFacialRecognition
             else if (e.KeyData == Keys.B)
             {
                 if (boundingBoxOn)
-                { boundingBoxOn = false; }
+                {
+                    boundingBoxOn = false;
+                    confidenceDisplaybox.Visible = false;
+                }
                 else
-                { boundingBoxOn = true; }
+                { 
+                    boundingBoxOn = true;
+                    confidenceDisplaybox.Visible = true;
+                }
             }
             else if (e.KeyData == Keys.N)
             {
                 if (useNLView)
                 { useNLView = false; }
                 else
-                { useNLView = true; }
+                { 
+                    useNLView = true;
+                    confidenceDisplaybox.Visible = false;
+                }
             }
         }
 

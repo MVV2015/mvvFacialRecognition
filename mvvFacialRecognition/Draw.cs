@@ -12,18 +12,28 @@ namespace mvvFacialRecognition
     
     class Draw
     {
+        Bitmap myImage;
         Graphics g;
         Pen p;
-        public Draw()
-        { }
+
+        public Draw(Bitmap currentViewImage, Pen myPen)
+        {
+            myImage = currentViewImage;
+            g = Graphics.FromImage(myImage);
+            p = myPen;
+        }
 
         internal Bitmap drawFaceRectangle(NleFace thisFace, Bitmap myImage, Pen myPen)
         {
-            p = myPen;
-            g = Graphics.FromImage(myImage);
             g.DrawRectangle(p, thisFace.Rectangle.X, thisFace.Rectangle.Y, thisFace.Rectangle.Width, thisFace.Rectangle.Height);
+            
             return myImage;
         }
+
+        //internal Bitmap markEyes(NleFace thisFace, Bitmap bmp, Pen p)
+        //{
+        //    g.DrawLine(p,thisFace.);
+        //}
     }
 
 
