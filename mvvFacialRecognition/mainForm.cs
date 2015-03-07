@@ -215,7 +215,7 @@ namespace mvvFacialRecognition
                     {
                         matchDelay++;
                         // get location for confidence level text boy
-                        Point locConfText = new Point(thisFace.Rectangle.Bottom, thisFace.Rectangle.Left);
+                        Point locConfText = new Point(mainFeedPictureBox.Bottom - thisFace.Rectangle.Bottom, mainFeedPictureBox.Left + thisFace.Rectangle.Left);
                         if (boundingBoxOn)
                         {
                             bmp = getfeatures.drawFaceRectangle(thisFace, bmp, p);
@@ -235,7 +235,7 @@ namespace mvvFacialRecognition
                             if (confidenceDisplaybox.InvokeRequired)
                                 {
                                     confidenceDisplaybox.Invoke(new Action(() => confidenceDisplaybox.Text = ("Confidence Score: "+((Int16)thisFace.Confidence).ToString())));
-                                    confidenceDisplaybox.Invoke(new Action(() => confidenceDisplaybox.Location = (locConfText)));
+                                    confidenceDisplaybox.Invoke(new Action(() => confidenceDisplaybox.Location = locConfText));
                                 }
                                 else
                                 {
