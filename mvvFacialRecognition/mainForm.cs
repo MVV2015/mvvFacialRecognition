@@ -26,29 +26,30 @@ namespace mvvFacialRecognition
     public partial class mainForm : Form
     {
         bool useNLView = true;
-        const string Components = "Biometrics.FaceExtraction,Devices.Cameras,Biometrics.FaceMatching";
-        dbInterface myDdInterface = new dbInterface();
         bool isLive = false;
-        bool markEyes = false; 
         bool fullScreen = true;
         bool boundingBoxOn = true;
         static int frameRate = 25; // Set video frame rate here.
-        static int framesBetweenSample = 2000/frameRate; // two seconds between match attempts
+        static int framesBetweenSample = 2000 / frameRate; // two seconds between match attempts
+        List<string> userIdList = new List<string>();
+        Bitmap capturedImage = null;
+        Bitmap bmp = null;
+        Thread myThread;
+        Thread matchingThread;
+        dbInterface myDdInterface = new dbInterface();
 
+        const string Components = "Biometrics.FaceExtraction,Devices.Cameras,Biometrics.FaceMatching";
         NCamera camera = null;
         NImage currentImage = null;
         NGrayscaleImage grayscaleImage = null;
         NleFace thisFace;
         NLExtractor templateExtractor = new NLExtractor();
+
+        // maybe we can try using this instread of NLAttributes[]
         NLAttributes details;// for NLExtractor and NleFace
+
         NBiometricStatus extractionStatus = NBiometricStatus.None;
         NLTemplate facialTemplate = null;
-        Bitmap capturedImage = null;
-        Bitmap bmp = null;
-        Thread myThread;
-        Thread matchingThread;
-        //ManualResetEvent pauseCapture = new ManualResetEvent(true);
-        List<string> userIdList = new List<string>();
         
             
         public mainForm()
@@ -124,7 +125,7 @@ namespace mvvFacialRecognition
         {  // what if the camera is disconnected during feed?
             verifyLicense();
             templateExtractor.TemplateSize = NleTemplateSize.Large;
-            templateExtractor.DetectAllFeaturePoints = true;
+            templateExtractor.DetectAllFeaturePoints = false;
             // False, will only detect eyes.
             templateExtractor.FavorLargestFace = true;
             // Extract details only on the largest face
@@ -153,81 +154,77 @@ namespace mvvFacialRecognition
 
                 //if (fullScreen)
                 //{
-                if (useNLView)
-                {
-                    if (currentView.Visible == false)
+                    if (useNLView)
                     {
-                        currentView.Invoke(new Action(() => currentView.Visible = true));
-                    }
-
-                    // remove mainFeedPictureBox to invisible
-                    if (mainFeedPictureBox.Visible == true)
-                    {
-                        if (mainFeedPictureBox.InvokeRequired)
+                        if (currentView.Visible == false)
                         {
-                            mainFeedPictureBox.Invoke(new Action(() => mainFeedPictureBox.Visible = false));
+                            currentView.Invoke(new Action(() => currentView.Visible = true));
                         }
-                        else
-                        { mainFeedPictureBox.Visible = false; }
-                    }
 
-                    //if (templateExtractor.DetectFace(grayscaleImage, out thisFace))
+                        // remove mainFeedPictureBox to invisible
+                        if (mainFeedPictureBox.Visible == true)
+                        {
+                            if (mainFeedPictureBox.InvokeRequired)
+                            {
+                                mainFeedPictureBox.Invoke(new Action(() => mainFeedPictureBox.Visible = false));
+                            }
+                            else
+                            { mainFeedPictureBox.Visible = false; }
+                        }
+                        // Set image to currentView
+                        currentView.Invoke(new Action(() => currentView.Image = bmp));
+
+                        //if (templateExtractor.DetectFace(grayscaleImage, out thisFace))
                         if (detectDetails(grayscaleImage, out detectionDetails))
-                    {
-                        currentView.DetectionDetails = detectionDetails;
-                        matchDelay++;
-                        
-
-                    //    // Pause to see bounding box
-                    //    Thread.Sleep(250);
-                    }
-
-                    // Set image to currentView
-                    currentView.Invoke(new Action(() =>currentView.Image=bmp));
-
-                }
-
-                if (!useNLView)
-                {
-                    // make currentView invisible
-                    if (currentView.Visible == true)
-                    {
-                        currentView.Invoke(new Action(() => currentView.Visible = false));
-                    }
-                    // make mainFeedPictureBox visible
-                    if (mainFeedPictureBox.Visible == false)
-                    {
-                        mainFeedPictureBox.Invoke(new Action(() => mainFeedPictureBox.Visible = true));
-                    }
-
-                    if (templateExtractor.DetectFace(grayscaleImage, out thisFace))
-                    {
-                        matchDelay++;
-                        
-                        Point locConfText = new Point(mainFeedPictureBox.Bottom - thisFace.Rectangle.Bottom, mainFeedPictureBox.Left + thisFace.Rectangle.Left);
-                        if (boundingBoxOn)
                         {
-                            // We can only draw the rectangle and confidence score with a NleFace object. 
-                            // If we want more we have to use NlView.
-                            bmp = drawfeatures.drawFaceRectangle(thisFace, bmp, (int)thisFace.Confidence);                            
+                            currentView.DetectionDetails = detectionDetails;
+                            matchDelay++;
+                            //    // Pause to see bounding box
+                            //    Thread.Sleep(250);
                         }
                     }
 
-                    // display image on pictureBox
-                    mainFeedPictureBox.Invoke(new Action(() => mainFeedPictureBox.Image = bmp));
+                    if (!useNLView)
+                    {
+                        // make currentView invisible
+                        if (currentView.Visible == true)
+                        {
+                            currentView.Invoke(new Action(() => currentView.Visible = false));
+                        }
+                        // make mainFeedPictureBox visible
+                        if (mainFeedPictureBox.Visible == false)
+                        {
+                            mainFeedPictureBox.Invoke(new Action(() => mainFeedPictureBox.Visible = true));
+                        }
 
-                    //// pause to see bounding box
-                    //Thread.Sleep(250);
-                }
-                if (matchDelay == framesBetweenSample)
-                {
-                    // Should I shut off face detection while matching?
-                    matchingThread = new Thread(attemptMatch);
-                    matchingThread.Start();
-                    //Can I abort this thread here or can I do it at the end of the matching method?
-                    matchingThread.Abort();
-                    matchDelay = 0;
-                }
+                        if (templateExtractor.DetectFace(grayscaleImage, out thisFace))
+                        {
+                            matchDelay++;
+
+                            Point locConfText = new Point(mainFeedPictureBox.Bottom - thisFace.Rectangle.Bottom, mainFeedPictureBox.Left + thisFace.Rectangle.Left);
+                            if (boundingBoxOn)
+                            {
+                                // We can only draw the rectangle and confidence score with a NleFace object. 
+                                // If we want more we have to use NlView.
+                                bmp = drawfeatures.drawFaceRectangle(thisFace, bmp, (int)thisFace.Confidence);
+                            }
+                        }
+
+                        // display image on pictureBox
+                        mainFeedPictureBox.Invoke(new Action(() => mainFeedPictureBox.Image = bmp));
+
+                        //// pause to see bounding box
+                        //Thread.Sleep(250);
+                    }
+                    if (matchDelay == framesBetweenSample)
+                    {
+                        // Should I shut off face detection while matching?
+                        matchingThread = new Thread(attemptMatch);
+                        matchingThread.Start();
+                        //Can I abort this thread here or can I do it at the end of the matching method?
+                        matchingThread.Abort();
+                        matchDelay = 0;
+                    }
                 //}
                 timer.Stop();
                 elapsed = (Int32)timer.ElapsedMilliseconds;
@@ -288,6 +285,7 @@ namespace mvvFacialRecognition
                 DialogResult dr = MessageBox.Show("Please insert the license key, wait for it to authenticate and then click 'Retry'.", "Retry?", MessageBoxButtons.RetryCancel);
                 if (dr == DialogResult.Cancel)
                 {
+// get this to close out the app!!!
                     this.Close();
                 }
             }
@@ -310,7 +308,7 @@ namespace mvvFacialRecognition
             }
         }
 
-
+// Why doesn't this work after selecting radio button?
         private void mainForm_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyData == Keys.Escape)
@@ -393,6 +391,119 @@ namespace mvvFacialRecognition
             if (NlViewSelectButton.Checked)
             {
                 this.useNLView = true;
+            }
+        }
+
+        private void drawEyesButton_Click(object sender, EventArgs e)
+        {
+            if (currentView.ShowEyes == true)
+            {
+                drawEyesButton.Checked = false;
+                currentView.ShowEyes = false;
+            }
+            else
+            {
+                drawEyesButton.Checked = true;
+                currentView.ShowEyes = true;
+            }
+        }
+
+        private void faceConfButton_Click(object sender, EventArgs e)
+        {
+            if (currentView.ShowFaceConfidence == true)
+            {
+                currentView.ShowFaceConfidence = false;
+                faceConfButton.Checked = false;
+            }
+            else
+            {
+                currentView.ShowFaceConfidence = true;
+                faceConfButton.Checked = true;
+            }
+        }
+
+        private void eyeConfidenceButton_Click(object sender, EventArgs e)
+        {
+            if (currentView.ShowEyesConfidence == false)
+            {
+                currentView.ShowEyesConfidence = true;
+                eyeConfidenceButton.Checked = true;
+            }
+            else
+            {
+                currentView.ShowEyesConfidence = false;
+                eyeConfidenceButton.Checked = false;
+            }
+        }
+
+        private void markNoseButton_Click(object sender, EventArgs e)
+        {
+            if (currentView.ShowNose == true)
+            {
+                markNoseButton.Checked = false;
+                currentView.ShowNose = false;
+            }
+            else
+            {
+                markNoseButton.Checked = true;
+                currentView.ShowNose = true;
+            }
+        }
+
+        private void markMouthButton_Click(object sender, EventArgs e)
+        {
+            if(currentView.ShowMouth == true)
+            {
+                currentView.ShowMouth = false;
+                markMouthButton.Checked = false;
+            }
+            else
+            {
+                currentView.ShowMouth = true;
+                markMouthButton.Checked = true;
+            }
+        }
+
+        private void noseConfButton_Click(object sender, EventArgs e)
+        {
+            if (currentView.ShowNoseConfidence ==  true)
+            {
+                currentView.ShowNoseConfidence = false;
+                noseConfButton.Checked = false;
+            }
+            else
+            {
+                currentView.ShowNoseConfidence = true;
+                noseConfButton.Checked = true;
+            }
+        }
+
+        private void mouthConfButton_Click(object sender, EventArgs e)
+        {
+            if (currentView.ShowMouthConfidence ==  true)
+            {
+                currentView.ShowMouthConfidence = false;
+                mouthConfButton.Checked = false;
+            }
+            else
+            {
+                currentView.ShowMouthConfidence = true;
+                mouthConfButton.Checked = true;
+            }
+        }
+
+        private void detectAllFeaturesButton_Click(object sender, EventArgs e)
+        {
+            if (templateExtractor.DetectAllFeaturePoints == false)
+            {
+                detectAllFeaturesButton.Checked = true;
+                templateExtractor.DetectAllFeaturePoints = true;
+            }
+            else
+            {
+                detectAllFeaturesButton.Checked = false;
+                templateExtractor.DetectAllFeaturePoints = false;
+                currentView.DetectionDetails = null;
             }
         }
     }
