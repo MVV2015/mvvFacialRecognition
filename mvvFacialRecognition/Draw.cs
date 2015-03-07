@@ -24,18 +24,11 @@ namespace mvvFacialRecognition
             p = myPen;
         }
 
-        internal Bitmap drawFaceRectangle(NleFace thisFace, Bitmap myImage, Pen myPen, int confScore)
+        internal Bitmap drawFaceRectangle(NleFace thisFace, Bitmap myImage, int confScore)
         {
             g.DrawRectangle(p, thisFace.Rectangle.X, thisFace.Rectangle.Y, thisFace.Rectangle.Width, thisFace.Rectangle.Height);
             g.DrawString(("Confidence Score: " + confScore), myFont, p.Brush, thisFace.Rectangle.Left, thisFace.Rectangle.Bottom);
             return myImage;
         }
-
-        //internal Bitmap markEyes(NleFace thisFace, Bitmap bmp, Pen p)
-        //{
-        //    g.DrawLine(p,thisFace.);
-        //}
     }
-
-
 }

@@ -124,7 +124,7 @@ namespace mvvFacialRecognition
         {  // what if the camera is disconnected during feed?
             verifyLicense();
             templateExtractor.TemplateSize = NleTemplateSize.Large;
-            templateExtractor.DetectAllFeaturePoints = false;
+            templateExtractor.DetectAllFeaturePoints = true;
             // False, will only detect eyes.
             templateExtractor.FavorLargestFace = true;
             // Extract details only on the largest face
@@ -203,15 +203,13 @@ namespace mvvFacialRecognition
                     if (templateExtractor.DetectFace(grayscaleImage, out thisFace))
                     {
                         matchDelay++;
-                        // get location for confidence level text boy
+                        
                         Point locConfText = new Point(mainFeedPictureBox.Bottom - thisFace.Rectangle.Bottom, mainFeedPictureBox.Left + thisFace.Rectangle.Left);
                         if (boundingBoxOn)
                         {
-                            bmp = drawfeatures.drawFaceRectangle(thisFace, bmp, p, (int)thisFace.Confidence);                            
-                        }
-                        if (markEyes)
-                        {
-                            //bmp = getfeatures.markEyes(thisFace, bmp, p);
+                            // We can only draw the rectangle and confidence score with a NleFace object. 
+                            // If we want more we have to use NlView.
+                            bmp = drawfeatures.drawFaceRectangle(thisFace, bmp, (int)thisFace.Confidence);                            
                         }
                     }
 
