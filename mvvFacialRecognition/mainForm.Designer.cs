@@ -38,7 +38,6 @@
             this.userIdDropDown = new System.Windows.Forms.ComboBox();
             this.NleFaceSettingsTab = new System.Windows.Forms.TabPage();
             this.NlViewSettingsTab = new System.Windows.Forms.TabPage();
-            this.confidenceDisplaybox = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.mainFeedPictureBox)).BeginInit();
             this.operationsTabControl.SuspendLayout();
             this.userInfoTab.SuspendLayout();
@@ -155,22 +154,11 @@
             this.NlViewSettingsTab.Text = "NlView Settings";
             this.NlViewSettingsTab.UseVisualStyleBackColor = true;
             // 
-            // confidenceDisplaybox
-            // 
-            this.confidenceDisplaybox.BackColor = System.Drawing.SystemColors.Control;
-            this.confidenceDisplaybox.Location = new System.Drawing.Point(100, 361);
-            this.confidenceDisplaybox.Name = "confidenceDisplaybox";
-            this.confidenceDisplaybox.Size = new System.Drawing.Size(120, 20);
-            this.confidenceDisplaybox.TabIndex = 3;
-            this.confidenceDisplaybox.TabStop = false;
-            this.confidenceDisplaybox.Visible = false;
-            // 
             // mainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(910, 621);
-            this.Controls.Add(this.confidenceDisplaybox);
             this.Controls.Add(this.operationsTabControl);
             this.Controls.Add(this.currentView);
             this.Controls.Add(this.mainFeedPictureBox);
@@ -184,7 +172,6 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -200,7 +187,6 @@
         private System.Windows.Forms.RadioButton NlViewSelectButton;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.RadioButton bitmapSelectButton;
-        private System.Windows.Forms.TextBox confidenceDisplaybox;
 
     }
 }

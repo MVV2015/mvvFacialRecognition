@@ -128,6 +128,8 @@ namespace mvvFacialRecognition
             // False, will only detect eyes.
             templateExtractor.FavorLargestFace = true;
             // Extract details only on the largest face
+
+            NleDetectionDetails[] detectionDetails;
             camera.StartCapturing();
             
             //create graphics object
@@ -145,10 +147,9 @@ namespace mvvFacialRecognition
                 currentImage = camera.GetFrame();
                 currentImage.FlipHorizontally();
                 bmp = currentImage.ToBitmap();
-                Draw getfeatures = new Draw(bmp, p);
+                Draw drawfeatures = new Draw(bmp, p);
                 // create grayscale image for template operations
                 grayscaleImage = currentImage.ToGrayscale();
-                currentView.DetectionDetails = detectDetails(grayscaleImage);
 
                 //if (fullScreen)
                 //{
@@ -169,16 +170,13 @@ namespace mvvFacialRecognition
                         else
                         { mainFeedPictureBox.Visible = false; }
                     }
-                    if (confidenceDisplaybox.InvokeRequired)
-                    {
-                        confidenceDisplaybox.Invoke(new Action(() => confidenceDisplaybox.Visible = false));
-                    }
-                    else
-                    { confidenceDisplaybox.Visible = false; }
 
-                    if (templateExtractor.DetectFace(grayscaleImage, out thisFace))
+                    //if (templateExtractor.DetectFace(grayscaleImage, out thisFace))
+                        if (detectDetails(grayscaleImage, out detectionDetails))
                     {
+                        currentView.DetectionDetails = detectionDetails;
                         matchDelay++;
+                        
 
                     //    // Pause to see bounding box
                     //    Thread.Sleep(250);
@@ -202,15 +200,6 @@ namespace mvvFacialRecognition
                         mainFeedPictureBox.Invoke(new Action(() => mainFeedPictureBox.Visible = true));
                     }
 
-                    // set color of confidenct display text
-                    if (confidenceDisplaybox.InvokeRequired)
-                    {
-                        confidenceDisplaybox.Invoke(new Action(() => confidenceDisplaybox.ForeColor = currentView.FaceRectangleColor));
-                    }
-                    else
-                    {
-                        confidenceDisplaybox.ForeColor = currentView.FaceRectangleColor;
-                    }
                     if (templateExtractor.DetectFace(grayscaleImage, out thisFace))
                     {
                         matchDelay++;
@@ -218,29 +207,7 @@ namespace mvvFacialRecognition
                         Point locConfText = new Point(mainFeedPictureBox.Bottom - thisFace.Rectangle.Bottom, mainFeedPictureBox.Left + thisFace.Rectangle.Left);
                         if (boundingBoxOn)
                         {
-                            bmp = getfeatures.drawFaceRectangle(thisFace, bmp, p);
-                            // turn on face confidence display
-                            if (confidenceDisplaybox.Visible == false)
-                            {
-                                if (confidenceDisplaybox.InvokeRequired)
-                                {
-                                    confidenceDisplaybox.Invoke(new Action(() => confidenceDisplaybox.Visible = true));
-                                }
-                                else
-                                {
-                                    confidenceDisplaybox.Visible = true;
-                                }
-                            }
-                            // insert score as text and relocate the box
-                            if (confidenceDisplaybox.InvokeRequired)
-                                {
-                                    confidenceDisplaybox.Invoke(new Action(() => confidenceDisplaybox.Text = ("Confidence Score: "+((Int16)thisFace.Confidence).ToString())));
-                                    confidenceDisplaybox.Invoke(new Action(() => confidenceDisplaybox.Location = locConfText));
-                                }
-                                else
-                                {
-                                    confidenceDisplaybox.Text = thisFace.Confidence.ToString();
-                                }
+                            bmp = drawfeatures.drawFaceRectangle(thisFace, bmp, p, (int)thisFace.Confidence);                            
                         }
                         if (markEyes)
                         {
@@ -290,27 +257,29 @@ namespace mvvFacialRecognition
             // Extractor methods pg 2355
         }
 
-        private NleDetectionDetails[] detectDetails(NGrayscaleImage grayscaleImage)
+        private bool detectDetails(NGrayscaleImage grayscaleImage, out NleDetectionDetails[] detectionDetails)
         {
             if (grayscaleImage ==null)
             {
-                return null;
+                detectionDetails = null;
+                return false;
             }
             templateExtractor.MaxRecordsPerTemplate = 1;
             // See how many faces are in the image
             NleFace[] facesInIMage = templateExtractor.DetectFaces(grayscaleImage);
             // Get details on the faces
-            NleDetectionDetails[] detectionDetails = new NleDetectionDetails[facesInIMage.Length];
+            NleDetectionDetails[] _detectionDetails = new NleDetectionDetails[facesInIMage.Length];
             if (facesInIMage.Length == 0)
             {
                 detectionDetails = null;
-                return detectionDetails;
+                return false;
             }
-            for (int i = 0; i < detectionDetails.Length; i++)
+            for (int i = 0; i < _detectionDetails.Length; i++)
             {
-                detectionDetails[i] = templateExtractor.DetectFacialFeatures(grayscaleImage, facesInIMage[i]);
+                _detectionDetails[i] = templateExtractor.DetectFacialFeatures(grayscaleImage, facesInIMage[i]);
             }
-            return detectionDetails;
+            detectionDetails = _detectionDetails;
+            return true;
         }
 
         public void verifyLicense()
@@ -396,12 +365,10 @@ namespace mvvFacialRecognition
                 if (boundingBoxOn)
                 {
                     boundingBoxOn = false;
-                    confidenceDisplaybox.Visible = false;
                 }
                 else
                 { 
                     boundingBoxOn = true;
-                    confidenceDisplaybox.Visible = true;
                 }
             }
             else if (e.KeyData == Keys.N)
@@ -411,7 +378,6 @@ namespace mvvFacialRecognition
                 else
                 { 
                     useNLView = true;
-                    confidenceDisplaybox.Visible = false;
                 }
             }
         }

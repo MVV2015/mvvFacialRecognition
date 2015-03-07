@@ -15,6 +15,7 @@ namespace mvvFacialRecognition
         Bitmap myImage;
         Graphics g;
         Pen p;
+        Font myFont = new Font("Microsoft Sans Serif",(float)8);
 
         public Draw(Bitmap currentViewImage, Pen myPen)
         {
@@ -23,10 +24,10 @@ namespace mvvFacialRecognition
             p = myPen;
         }
 
-        internal Bitmap drawFaceRectangle(NleFace thisFace, Bitmap myImage, Pen myPen)
+        internal Bitmap drawFaceRectangle(NleFace thisFace, Bitmap myImage, Pen myPen, int confScore)
         {
             g.DrawRectangle(p, thisFace.Rectangle.X, thisFace.Rectangle.Y, thisFace.Rectangle.Width, thisFace.Rectangle.Height);
-            
+            g.DrawString(("Confidence Score: " + confScore), myFont, p.Brush, thisFace.Rectangle.Left, thisFace.Rectangle.Bottom);
             return myImage;
         }
 
