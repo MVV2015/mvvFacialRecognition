@@ -54,51 +54,43 @@
   <ItemGroup>
     <Reference Include="Neurotec, Version=4.1.0.0, Culture=neutral, PublicKeyToken=ea4ecf06177ea613, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\x86\Debug\Neurotec.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Neurotechnology\Neurotec Biometric 4.2 SDK\Bin\dotNET\Neurotec.dll</HintPath>
     </Reference>
     <Reference Include="Neurotec.Biometrics, Version=4.2.0.0, Culture=neutral, PublicKeyToken=ea4ecf06177ea613, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\x86\Debug\Neurotec.Biometrics.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Neurotechnology\Neurotec Biometric 4.2 SDK\Bin\dotNET\Neurotec.Biometrics.dll</HintPath>
     </Reference>
     <Reference Include="Neurotec.Biometrics.Gui, Version=4.2.0.0, Culture=neutral, PublicKeyToken=ea4ecf06177ea613, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\x86\Debug\Neurotec.Biometrics.Gui.dll</HintPath>
-    </Reference>
-    <Reference Include="Neurotec.Biometrics.Standards, Version=4.2.0.0, Culture=neutral, PublicKeyToken=ea4ecf06177ea613, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\x86\Debug\Neurotec.Biometrics.Standards.dll</HintPath>
-    </Reference>
-    <Reference Include="Neurotec.Biometrics.Standards.Gui, Version=4.2.0.0, Culture=neutral, PublicKeyToken=ea4ecf06177ea613, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\x86\Debug\Neurotec.Biometrics.Standards.Gui.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Neurotechnology\Neurotec Biometric 4.2 SDK\Bin\dotNET\Neurotec.Biometrics.Gui.dll</HintPath>
     </Reference>
     <Reference Include="Neurotec.Biometrics.Tools, Version=4.1.0.0, Culture=neutral, PublicKeyToken=ea4ecf06177ea613, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\x86\Debug\Neurotec.Biometrics.Tools.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Neurotechnology\Neurotec Biometric 4.2 SDK\Bin\dotNET\Neurotec.Biometrics.Tools.dll</HintPath>
     </Reference>
     <Reference Include="Neurotec.Cluster, Version=4.2.0.0, Culture=neutral, PublicKeyToken=ea4ecf06177ea613, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\x86\Debug\Neurotec.Cluster.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Neurotechnology\Neurotec Biometric 4.2 SDK\Bin\dotNET\Neurotec.Cluster.dll</HintPath>
     </Reference>
     <Reference Include="Neurotec.Devices, Version=4.1.0.0, Culture=neutral, PublicKeyToken=ea4ecf06177ea613, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\x86\Debug\Neurotec.Devices.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Neurotechnology\Neurotec Biometric 4.2 SDK\Bin\dotNET\Neurotec.Devices.dll</HintPath>
     </Reference>
     <Reference Include="Neurotec.Gui, Version=4.1.0.0, Culture=neutral, PublicKeyToken=ea4ecf06177ea613, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\x86\Debug\Neurotec.Gui.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Neurotechnology\Neurotec Biometric 4.2 SDK\Bin\dotNET\Neurotec.Gui.dll</HintPath>
     </Reference>
     <Reference Include="Neurotec.Licensing, Version=4.2.0.0, Culture=neutral, PublicKeyToken=ea4ecf06177ea613, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\x86\Debug\Neurotec.Licensing.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Neurotechnology\Neurotec Biometric 4.2 SDK\Bin\dotNET\Neurotec.Licensing.dll</HintPath>
     </Reference>
     <Reference Include="Neurotec.Media, Version=4.1.0.0, Culture=neutral, PublicKeyToken=ea4ecf06177ea613, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\x86\Debug\Neurotec.Media.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Neurotechnology\Neurotec Biometric 4.2 SDK\Bin\dotNET\Neurotec.Media.dll</HintPath>
     </Reference>
     <Reference Include="Neurotec.Media.Processing, Version=4.2.0.0, Culture=neutral, PublicKeyToken=ea4ecf06177ea613, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\x86\Debug\Neurotec.Media.Processing.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Neurotechnology\Neurotec Biometric 4.2 SDK\Bin\dotNET\Neurotec.Media.Processing.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
