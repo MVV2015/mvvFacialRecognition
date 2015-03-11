@@ -27,7 +27,7 @@ namespace mvvFacialRecognition
     {
         bool useNLView = true;
         bool isLive = false;
-        bool fullScreen = true;
+        bool fullScreen = false;
         bool boundingBoxOn = true;
         static int frameRate = 25; // Set video frame rate here.
         static int framesBetweenSample = 2000 / frameRate; // two seconds between match attempts
@@ -59,27 +59,24 @@ namespace mvvFacialRecognition
             operationsTabControl.SelectedIndexChanged += new EventHandler(operationsTabControl_SelectedIndexChanged);
             //userIdDropDown.SelectionChangeCommitted += new EventHandler(userIdSelected);
             NDeviceManager devMan = new NDeviceManager(NDeviceType.Camera, true, false, System.Threading.SynchronizationContext.Current);
+            
             checkForCamera(devMan);           
         }
 
         private void mainForm_Load(object sender, EventArgs e)
         {
-            // set initial form state
-            operationsTabControl.Visible = false;
-            this.WindowState = FormWindowState.Maximized;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            // resize display boxes
+            // Image Size = {Width = 640 Height = 480}
+            mainFeedPictureBox.Location = new Point(100, 110);
+            mainFeedPictureBox.Width = 480;
+            mainFeedPictureBox.Height = 360;
 
-            // Set location and size of bitmap display box
-            mainFeedPictureBox.Location = new Point(0, 0);
-            mainFeedPictureBox.Height = this.Height;
-            mainFeedPictureBox.Width = this.Width;
+            currentView.Location = new Point(100, 110);
+            currentView.Width = 480;
+            currentView.Height = 360;
+            currentView.Zoom = (float).75;
 
-            // Set location and size of currentView
-            currentView.Location = new Point(0, 0);
-            currentView.Height = this.Height;
-            currentView.Width = this.Width;
-
-            fullScreen = true;
+            operationsTabControl.Visible = true;
 
             // start the video feed
             if (camera != null)
@@ -93,11 +90,12 @@ namespace mvvFacialRecognition
             }
         }
 
-        ~mainForm()
+        private void mainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             try
             {
                 isLive = false;
+                myThread.Abort();
                 NLicense.ReleaseComponents(Components);
             }
             catch (Exception ex)
@@ -105,7 +103,6 @@ namespace mvvFacialRecognition
                 MessageBox.Show("Unable to release license. " + ex.ToString());
             }
         }
-
         private void checkForCamera(NDeviceManager devMan)
         {
             int count = devMan.Devices.Count();
@@ -125,7 +122,7 @@ namespace mvvFacialRecognition
         {  // what if the camera is disconnected during feed?
             verifyLicense();
             templateExtractor.TemplateSize = NleTemplateSize.Large;
-            templateExtractor.DetectAllFeaturePoints = true;
+            templateExtractor.DetectAllFeaturePoints = false;
             // False, will only detect eyes.
             templateExtractor.FavorLargestFace = true;
             // Extract details only on the largest face
@@ -308,75 +305,75 @@ namespace mvvFacialRecognition
             }
         }
 
-// Why doesn't this work after selecting radio button?
-        private void mainForm_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyData == Keys.Escape)
-            {
-                if (fullScreen == true)
-                {
-                    fullScreen = false;
-                    // resize the form
-                    this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
-                    this.WindowState = FormWindowState.Normal;
-                    // resize display boxes
-                    // Image Size = {Width = 640 Height = 480}
-                    mainFeedPictureBox.Location = new Point(100, 110);
-                    mainFeedPictureBox.Width = 480;
-                    mainFeedPictureBox.Height = 360;
+//// Why doesn't this work after selecting radio button?
+//        private void mainForm_KeyDown(object sender, KeyEventArgs e)
+//        {
+//            if (e.KeyData == Keys.Escape)
+//            {
+//                if (fullScreen == true)
+//                {
+//                    fullScreen = false;
+//                    // resize the form
+//                    this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+//                    this.WindowState = FormWindowState.Normal;
+//                    // resize display boxes
+//                    // Image Size = {Width = 640 Height = 480}
+//                    mainFeedPictureBox.Location = new Point(100, 110);
+//                    mainFeedPictureBox.Width = 480;
+//                    mainFeedPictureBox.Height = 360;
 
-                    currentView.Location = new Point(100, 110);
-                    currentView.Width = 480;
-                    currentView.Height = 360;
-                    currentView.Zoom = (float).75;
+//                    currentView.Location = new Point(100, 110);
+//                    currentView.Width = 480;
+//                    currentView.Height = 360;
+//                    currentView.Zoom = (float).75;
 
-                    operationsTabControl.Visible = true;
+//                    operationsTabControl.Visible = true;
                     
-                }
-                else
-                {
-                    fullScreen = true;
-                    // maximize the form
-                    this.WindowState = FormWindowState.Maximized;
-                    this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+//                }
+//                else
+//                {
+//                    //fullScreen = true;
+//                    // maximize the form
+//                    this.WindowState = FormWindowState.Maximized;
+//                    this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
 
-                    // enlarge display boxes
-                    //Screen dimentions = {Width = 1456 Height = 916}
-                    mainFeedPictureBox.Location = new Point(0, 0);
-                    mainFeedPictureBox.Height = this.Height;
-                    mainFeedPictureBox.Width = this.Width;
+//                    // enlarge display boxes
+//                    //Screen dimentions = {Width = 1456 Height = 916}
+//                    mainFeedPictureBox.Location = new Point(0, 0);
+//                    mainFeedPictureBox.Height = this.Height;
+//                    mainFeedPictureBox.Width = this.Width;
 
-                    currentView.Location = new Point(0, 0);
-                    currentView.Height = 900;
-                    currentView.Width = 1200;
-                    //currentView.Height = this.Height;
-                    //currentView.Width = this.Width;
-                    currentView.Zoom = 2;
+//                    currentView.Location = new Point(0, 0);
+//                    currentView.Height = 900;
+//                    currentView.Width = 1200;
+//                    //currentView.Height = this.Height;
+//                    //currentView.Width = this.Width;
+//                    currentView.Zoom = 2;
 
-                    operationsTabControl.Visible = false;
-                }
-            }
-            else if (e.KeyData == Keys.B)
-            {
-                if (boundingBoxOn)
-                {
-                    boundingBoxOn = false;
-                }
-                else
-                { 
-                    boundingBoxOn = true;
-                }
-            }
-            else if (e.KeyData == Keys.N)
-            {
-                if (useNLView)
-                { useNLView = false; }
-                else
-                { 
-                    useNLView = true;
-                }
-            }
-        }
+//                    operationsTabControl.Visible = false;
+//                }
+//            }
+//            else if (e.KeyData == Keys.B)
+//            {
+//                if (boundingBoxOn)
+//                {
+//                    boundingBoxOn = false;
+//                }
+//                else
+//                { 
+//                    boundingBoxOn = true;
+//                }
+//            }
+//            else if (e.KeyData == Keys.N)
+//            {
+//                if (useNLView)
+//                { useNLView = false; }
+//                else
+//                { 
+//                    useNLView = true;
+//                }
+//            }
+//        }
 
         private void bitmapSelectButton_CheckedChanged(object sender, EventArgs e)
         {
@@ -391,20 +388,6 @@ namespace mvvFacialRecognition
             if (NlViewSelectButton.Checked)
             {
                 this.useNLView = true;
-            }
-        }
-
-        private void drawEyesButton_Click(object sender, EventArgs e)
-        {
-            if (currentView.ShowEyes == true)
-            {
-                drawEyesButton.Checked = false;
-                currentView.ShowEyes = false;
-            }
-            else
-            {
-                drawEyesButton.Checked = true;
-                currentView.ShowEyes = true;
             }
         }
 
@@ -506,5 +489,20 @@ namespace mvvFacialRecognition
                 currentView.DetectionDetails = null;
             }
         }
+
+        private void drawEyesCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (currentView.ShowEyes == true)
+            {
+                drawEyesButton.Checked = false;
+                currentView.ShowEyes = false;
+            }
+            else
+            {
+                drawEyesButton.Checked = true;
+                currentView.ShowEyes = true;
+            }
+        }
+
     }
 }
