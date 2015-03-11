@@ -125,7 +125,7 @@ namespace mvvFacialRecognition
         {  // what if the camera is disconnected during feed?
             verifyLicense();
             templateExtractor.TemplateSize = NleTemplateSize.Large;
-            templateExtractor.DetectAllFeaturePoints = false;
+            templateExtractor.DetectAllFeaturePoints = true;
             // False, will only detect eyes.
             templateExtractor.FavorLargestFace = true;
             // Extract details only on the largest face
@@ -200,7 +200,7 @@ namespace mvvFacialRecognition
                         if (templateExtractor.DetectFace(grayscaleImage, out thisFace))
                         {
                             matchDelay++;
-
+                            //currentView.DetectionDetails[0] = templateExtractor.DetectFacialFeatures(grayscaleImage, thisFace);
                             Point locConfText = new Point(mainFeedPictureBox.Bottom - thisFace.Rectangle.Bottom, mainFeedPictureBox.Left + thisFace.Rectangle.Left);
                             if (boundingBoxOn)
                             {

@@ -32,6 +32,7 @@
             this.mainFeedPictureBox = new System.Windows.Forms.PictureBox();
             this.operationsTabControl = new System.Windows.Forms.TabControl();
             this.userInfoTab = new System.Windows.Forms.TabPage();
+            this.detectAllFeaturesButton = new System.Windows.Forms.RadioButton();
             this.faceConfButton = new System.Windows.Forms.RadioButton();
             this.noseConfButton = new System.Windows.Forms.RadioButton();
             this.mouthConfButton = new System.Windows.Forms.RadioButton();
@@ -45,7 +46,6 @@
             this.userIdDropDown = new System.Windows.Forms.ComboBox();
             this.NleFaceSettingsTab = new System.Windows.Forms.TabPage();
             this.NlViewSettingsTab = new System.Windows.Forms.TabPage();
-            this.detectAllFeaturesButton = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.mainFeedPictureBox)).BeginInit();
             this.operationsTabControl.SuspendLayout();
             this.userInfoTab.SuspendLayout();
@@ -57,15 +57,14 @@
             this.currentView.AutoScroll = true;
             this.currentView.AutoScrollMinSize = new System.Drawing.Size(2, 2);
             this.currentView.DetectionDetails = null;
-            this.currentView.DrawFaceConfidence = false;
             this.currentView.FaceIds = null;
+            this.currentView.FaceRectangleWidth = 3;
             this.currentView.Image = null;
             this.currentView.Location = new System.Drawing.Point(3, 1);
             this.currentView.Name = "currentView";
-            this.currentView.ShowEyes = false;
-            this.currentView.ShowFaceConfidence = false;
-            this.currentView.ShowMouth = false;
-            this.currentView.ShowNose = false;
+            this.currentView.ShowEyesConfidence = true;
+            this.currentView.ShowMouthConfidence = true;
+            this.currentView.ShowNoseConfidence = true;
             this.currentView.Size = new System.Drawing.Size(314, 290);
             this.currentView.TabIndex = 2;
             this.currentView.Zoom = 2F;
@@ -109,6 +108,19 @@
             this.userInfoTab.TabIndex = 0;
             this.userInfoTab.Text = "User Information";
             this.userInfoTab.UseVisualStyleBackColor = true;
+            // 
+            // detectAllFeaturesButton
+            // 
+            this.detectAllFeaturesButton.AutoSize = true;
+            this.detectAllFeaturesButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.detectAllFeaturesButton.Location = new System.Drawing.Point(38, 213);
+            this.detectAllFeaturesButton.Name = "detectAllFeaturesButton";
+            this.detectAllFeaturesButton.Size = new System.Drawing.Size(134, 17);
+            this.detectAllFeaturesButton.TabIndex = 10;
+            this.detectAllFeaturesButton.TabStop = true;
+            this.detectAllFeaturesButton.Text = "Detect All Features";
+            this.detectAllFeaturesButton.UseVisualStyleBackColor = true;
+            this.detectAllFeaturesButton.Click += new System.EventHandler(this.detectAllFeaturesButton_Click);
             // 
             // faceConfButton
             // 
@@ -257,19 +269,6 @@
             this.NlViewSettingsTab.TabIndex = 2;
             this.NlViewSettingsTab.Text = "NlView Settings";
             this.NlViewSettingsTab.UseVisualStyleBackColor = true;
-            // 
-            // detectAllFeaturesButton
-            // 
-            this.detectAllFeaturesButton.AutoSize = true;
-            this.detectAllFeaturesButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.detectAllFeaturesButton.Location = new System.Drawing.Point(38, 213);
-            this.detectAllFeaturesButton.Name = "detectAllFeaturesButton";
-            this.detectAllFeaturesButton.Size = new System.Drawing.Size(134, 17);
-            this.detectAllFeaturesButton.TabIndex = 10;
-            this.detectAllFeaturesButton.TabStop = true;
-            this.detectAllFeaturesButton.Text = "Detect All Features";
-            this.detectAllFeaturesButton.UseVisualStyleBackColor = true;
-            this.detectAllFeaturesButton.Click += new System.EventHandler(this.detectAllFeaturesButton_Click);
             // 
             // mainForm
             // 
