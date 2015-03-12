@@ -74,7 +74,7 @@ namespace mvvFacialRecognition
             currentView.Location = new Point(100, 110);
             currentView.Width = 480;
             currentView.Height = 360;
-            currentView.Zoom = (float).75;
+            currentView.Zoom = (float)2;
 
             operationsTabControl.Visible = true;
 
@@ -171,10 +171,11 @@ namespace mvvFacialRecognition
                         // Set image to currentView
                         currentView.Invoke(new Action(() => currentView.Image = bmp));
 
-                        //if (templateExtractor.DetectFace(grayscaleImage, out thisFace))
-                        if (detectDetails(grayscaleImage, out detectionDetails))
+                        if (templateExtractor.DetectFace(grayscaleImage, out thisFace))
+                        //if (detectDetails(grayscaleImage, out detectionDetails))
                         {
-                            currentView.DetectionDetails = detectionDetails;
+                            currentView.DetectionDetails = detectDetails(grayscaleImage);
+
                             matchDelay++;
                             //    // Pause to see bounding box
                             //    Thread.Sleep(250);
@@ -249,29 +250,23 @@ namespace mvvFacialRecognition
             // Extractor methods pg 2355
         }
 
-        private bool detectDetails(NGrayscaleImage grayscaleImage, out NleDetectionDetails[] detectionDetails)
+        private NleDetectionDetails[] detectDetails(NGrayscaleImage grayscaleImage)
         {
-            if (grayscaleImage ==null)
-            {
-                detectionDetails = null;
-                return false;
-            }
             templateExtractor.MaxRecordsPerTemplate = 1;
             // See how many faces are in the image
             NleFace[] facesInIMage = templateExtractor.DetectFaces(grayscaleImage);
             // Get details on the faces
             NleDetectionDetails[] _detectionDetails = new NleDetectionDetails[facesInIMage.Length];
-            if (facesInIMage.Length == 0)
+            if (facesInIMage.Length == 0 || grayscaleImage ==null)
             {
-                detectionDetails = null;
-                return false;
+                _detectionDetails = null;
+                return _detectionDetails;
             }
             for (int i = 0; i < _detectionDetails.Length; i++)
             {
                 _detectionDetails[i] = templateExtractor.DetectFacialFeatures(grayscaleImage, facesInIMage[i]);
-            }
-            detectionDetails = _detectionDetails;
-            return true;
+            }           
+            return _detectionDetails;
         }
 
         public void verifyLicense()
@@ -391,34 +386,6 @@ namespace mvvFacialRecognition
             }
         }
 
-        private void faceConfButton_Click(object sender, EventArgs e)
-        {
-            if (currentView.ShowFaceConfidence == true)
-            {
-                currentView.ShowFaceConfidence = false;
-                faceConfButton.Checked = false;
-            }
-            else
-            {
-                currentView.ShowFaceConfidence = true;
-                faceConfButton.Checked = true;
-            }
-        }
-
-        private void eyeConfidenceButton_Click(object sender, EventArgs e)
-        {
-            if (currentView.ShowEyesConfidence == false)
-            {
-                currentView.ShowEyesConfidence = true;
-                eyeConfidenceButton.Checked = true;
-            }
-            else
-            {
-                currentView.ShowEyesConfidence = false;
-                eyeConfidenceButton.Checked = false;
-            }
-        }
-
         private void markNoseButton_Click(object sender, EventArgs e)
         {
             if (currentView.ShowNose == true)
@@ -475,32 +442,52 @@ namespace mvvFacialRecognition
             }
         }
 
-        private void detectAllFeaturesButton_Click(object sender, EventArgs e)
-        {
-            if (templateExtractor.DetectAllFeaturePoints == false)
-            {
-                detectAllFeaturesButton.Checked = true;
-                templateExtractor.DetectAllFeaturePoints = true;
-            }
-            else
-            {
-                detectAllFeaturesButton.Checked = false;
-                templateExtractor.DetectAllFeaturePoints = false;
-                currentView.DetectionDetails = null;
-            }
-        }
-
         private void drawEyesCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             if (currentView.ShowEyes == true)
             {
-                drawEyesButton.Checked = false;
                 currentView.ShowEyes = false;
             }
             else
             {
-                drawEyesButton.Checked = true;
                 currentView.ShowEyes = true;
+            }
+        }
+
+        private void faceConfCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (currentView.ShowFaceConfidence == true)
+            {
+                currentView.ShowFaceConfidence = false;
+            }
+            else
+            {
+                currentView.ShowFaceConfidence = true;
+            }
+        }
+
+        private void showEyeCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (currentView.ShowEyesConfidence == false)
+            {
+                currentView.ShowEyesConfidence = true;
+            }
+            else
+            {
+                currentView.ShowEyesConfidence = false;
+            }
+        }
+
+        private void detectAllcheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (templateExtractor.DetectAllFeaturePoints == false)
+            {
+                templateExtractor.DetectAllFeaturePoints = true;
+            }
+            else
+            {
+                templateExtractor.DetectAllFeaturePoints = false;
+                currentView.DetectionDetails = null;
             }
         }
 

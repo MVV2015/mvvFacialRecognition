@@ -32,15 +32,15 @@
             this.mainFeedPictureBox = new System.Windows.Forms.PictureBox();
             this.operationsTabControl = new System.Windows.Forms.TabControl();
             this.userInfoTab = new System.Windows.Forms.TabPage();
+            this.detectAllcheckBox = new System.Windows.Forms.CheckBox();
+            this.showEyeCheckBox = new System.Windows.Forms.CheckBox();
+            this.faceConfCheckBox = new System.Windows.Forms.CheckBox();
             this.drawEyesCheckBox = new System.Windows.Forms.CheckBox();
             this.detectAllFeaturesButton = new System.Windows.Forms.RadioButton();
-            this.faceConfButton = new System.Windows.Forms.RadioButton();
             this.noseConfButton = new System.Windows.Forms.RadioButton();
             this.mouthConfButton = new System.Windows.Forms.RadioButton();
             this.markMouthButton = new System.Windows.Forms.RadioButton();
             this.markNoseButton = new System.Windows.Forms.RadioButton();
-            this.eyeConfidenceButton = new System.Windows.Forms.RadioButton();
-            this.drawEyesButton = new System.Windows.Forms.RadioButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.bitmapSelectButton = new System.Windows.Forms.RadioButton();
             this.NlViewSelectButton = new System.Windows.Forms.RadioButton();
@@ -61,12 +61,12 @@
             this.currentView.FaceIds = null;
             this.currentView.FaceRectangleWidth = 3;
             this.currentView.Image = null;
-            this.currentView.Location = new System.Drawing.Point(3, 1);
+            this.currentView.Location = new System.Drawing.Point(100, 110);
             this.currentView.Name = "currentView";
             this.currentView.ShowEyes = false;
             this.currentView.ShowMouth = false;
             this.currentView.ShowNose = false;
-            this.currentView.Size = new System.Drawing.Size(314, 290);
+            this.currentView.Size = new System.Drawing.Size(480, 360);
             this.currentView.TabIndex = 2;
             this.currentView.Zoom = 2F;
             // 
@@ -74,7 +74,7 @@
             // 
             this.mainFeedPictureBox.Location = new System.Drawing.Point(100, 110);
             this.mainFeedPictureBox.Name = "mainFeedPictureBox";
-            this.mainFeedPictureBox.Size = new System.Drawing.Size(320, 250);
+            this.mainFeedPictureBox.Size = new System.Drawing.Size(480, 360);
             this.mainFeedPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.mainFeedPictureBox.TabIndex = 0;
             this.mainFeedPictureBox.TabStop = false;
@@ -92,15 +92,15 @@
             // 
             // userInfoTab
             // 
+            this.userInfoTab.Controls.Add(this.detectAllcheckBox);
+            this.userInfoTab.Controls.Add(this.showEyeCheckBox);
+            this.userInfoTab.Controls.Add(this.faceConfCheckBox);
             this.userInfoTab.Controls.Add(this.drawEyesCheckBox);
             this.userInfoTab.Controls.Add(this.detectAllFeaturesButton);
-            this.userInfoTab.Controls.Add(this.faceConfButton);
             this.userInfoTab.Controls.Add(this.noseConfButton);
             this.userInfoTab.Controls.Add(this.mouthConfButton);
             this.userInfoTab.Controls.Add(this.markMouthButton);
             this.userInfoTab.Controls.Add(this.markNoseButton);
-            this.userInfoTab.Controls.Add(this.eyeConfidenceButton);
-            this.userInfoTab.Controls.Add(this.drawEyesButton);
             this.userInfoTab.Controls.Add(this.groupBox1);
             this.userInfoTab.Controls.Add(this.userIdDropDown);
             this.userInfoTab.Location = new System.Drawing.Point(4, 22);
@@ -110,6 +110,40 @@
             this.userInfoTab.TabIndex = 0;
             this.userInfoTab.Text = "User Information";
             this.userInfoTab.UseVisualStyleBackColor = true;
+            // 
+            // detectAllcheckBox
+            // 
+            this.detectAllcheckBox.AutoSize = true;
+            this.detectAllcheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.detectAllcheckBox.Location = new System.Drawing.Point(221, 214);
+            this.detectAllcheckBox.Name = "detectAllcheckBox";
+            this.detectAllcheckBox.Size = new System.Drawing.Size(135, 17);
+            this.detectAllcheckBox.TabIndex = 13;
+            this.detectAllcheckBox.Text = "Detect All Features";
+            this.detectAllcheckBox.UseVisualStyleBackColor = true;
+            this.detectAllcheckBox.CheckedChanged += new System.EventHandler(this.detectAllcheckBox_CheckedChanged);
+            // 
+            // showEyeCheckBox
+            // 
+            this.showEyeCheckBox.AutoSize = true;
+            this.showEyeCheckBox.Location = new System.Drawing.Point(241, 186);
+            this.showEyeCheckBox.Name = "showEyeCheckBox";
+            this.showEyeCheckBox.Size = new System.Drawing.Size(131, 17);
+            this.showEyeCheckBox.TabIndex = 12;
+            this.showEyeCheckBox.Text = "Show Eye Confidence";
+            this.showEyeCheckBox.UseVisualStyleBackColor = true;
+            this.showEyeCheckBox.CheckedChanged += new System.EventHandler(this.showEyeCheckBox_CheckedChanged);
+            // 
+            // faceConfCheckBox
+            // 
+            this.faceConfCheckBox.AutoSize = true;
+            this.faceConfCheckBox.Location = new System.Drawing.Point(241, 163);
+            this.faceConfCheckBox.Name = "faceConfCheckBox";
+            this.faceConfCheckBox.Size = new System.Drawing.Size(137, 17);
+            this.faceConfCheckBox.TabIndex = 11;
+            this.faceConfCheckBox.Text = "Show Face Confidence";
+            this.faceConfCheckBox.UseVisualStyleBackColor = true;
+            this.faceConfCheckBox.CheckedChanged += new System.EventHandler(this.faceConfCheckBox_CheckedChanged);
             // 
             // drawEyesCheckBox
             // 
@@ -133,19 +167,6 @@
             this.detectAllFeaturesButton.TabStop = true;
             this.detectAllFeaturesButton.Text = "Detect All Features";
             this.detectAllFeaturesButton.UseVisualStyleBackColor = true;
-            this.detectAllFeaturesButton.Click += new System.EventHandler(this.detectAllFeaturesButton_Click);
-            // 
-            // faceConfButton
-            // 
-            this.faceConfButton.AutoSize = true;
-            this.faceConfButton.Location = new System.Drawing.Point(57, 163);
-            this.faceConfButton.Name = "faceConfButton";
-            this.faceConfButton.Size = new System.Drawing.Size(136, 17);
-            this.faceConfButton.TabIndex = 9;
-            this.faceConfButton.TabStop = true;
-            this.faceConfButton.Text = "Show Face Confidence";
-            this.faceConfButton.UseVisualStyleBackColor = true;
-            this.faceConfButton.Click += new System.EventHandler(this.faceConfButton_Click);
             // 
             // noseConfButton
             // 
@@ -194,29 +215,6 @@
             this.markNoseButton.Text = "Mark Nose";
             this.markNoseButton.UseVisualStyleBackColor = true;
             this.markNoseButton.Click += new System.EventHandler(this.markNoseButton_Click);
-            // 
-            // eyeConfidenceButton
-            // 
-            this.eyeConfidenceButton.AutoSize = true;
-            this.eyeConfidenceButton.Location = new System.Drawing.Point(57, 186);
-            this.eyeConfidenceButton.Name = "eyeConfidenceButton";
-            this.eyeConfidenceButton.Size = new System.Drawing.Size(130, 17);
-            this.eyeConfidenceButton.TabIndex = 4;
-            this.eyeConfidenceButton.TabStop = true;
-            this.eyeConfidenceButton.Text = "Show Eye Confidence";
-            this.eyeConfidenceButton.UseVisualStyleBackColor = true;
-            this.eyeConfidenceButton.Click += new System.EventHandler(this.eyeConfidenceButton_Click);
-            // 
-            // drawEyesButton
-            // 
-            this.drawEyesButton.AutoSize = true;
-            this.drawEyesButton.Location = new System.Drawing.Point(57, 140);
-            this.drawEyesButton.Name = "drawEyesButton";
-            this.drawEyesButton.Size = new System.Drawing.Size(76, 17);
-            this.drawEyesButton.TabIndex = 3;
-            this.drawEyesButton.TabStop = true;
-            this.drawEyesButton.Text = "Draw Eyes";
-            this.drawEyesButton.UseVisualStyleBackColor = true;
             // 
             // groupBox1
             // 
@@ -318,13 +316,13 @@
         private System.Windows.Forms.RadioButton bitmapSelectButton;
         private System.Windows.Forms.RadioButton markMouthButton;
         private System.Windows.Forms.RadioButton markNoseButton;
-        private System.Windows.Forms.RadioButton eyeConfidenceButton;
-        private System.Windows.Forms.RadioButton drawEyesButton;
-        private System.Windows.Forms.RadioButton faceConfButton;
         private System.Windows.Forms.RadioButton noseConfButton;
         private System.Windows.Forms.RadioButton mouthConfButton;
         private System.Windows.Forms.RadioButton detectAllFeaturesButton;
         private System.Windows.Forms.CheckBox drawEyesCheckBox;
+        private System.Windows.Forms.CheckBox detectAllcheckBox;
+        private System.Windows.Forms.CheckBox showEyeCheckBox;
+        private System.Windows.Forms.CheckBox faceConfCheckBox;
 
     }
 }
