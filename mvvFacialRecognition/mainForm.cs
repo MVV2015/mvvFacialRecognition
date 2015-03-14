@@ -305,6 +305,7 @@ namespace mvvFacialRecognition
 
         private bool identify(NGrayscaleImage grayscaleImage)
         {
+            // Check the returns on this method
             verifyLicense();
             cryptography decrypt = new cryptography();
             NMatcher templateMatcher = null;
@@ -319,6 +320,7 @@ namespace mvvFacialRecognition
                     grayscaleImage = currentImage.ToGrayscale();
                     if (!createTemplate())
                     {
+                        MessageBox.Show("Template extraction failed. Try again?");
                         return false;
                     }
 
@@ -344,13 +346,14 @@ namespace mvvFacialRecognition
                     }
                     catch (IOException ex)
                     {
-                        MessageBox.Show("error reading reference image " + i + ": " + ex);
+                        MessageBox.Show("error reading reference template " + i + ": " + ex);
                         return false;
                     }
                 }
 
                 templateMatcher = new NMatcher();
                 templateMatcher.IdentifyStart(probeTemplateArray);
+
                 try
                 {
                     int keyNum = 0;
@@ -378,6 +381,7 @@ namespace mvvFacialRecognition
                         //identifyLNameTxtBox.Text = myDdInterface.getLName(identifyUserIdTxtBox.Text);
                         //idTabNameGroupBox.Visible = true;
                         //MessageBox.Show("Image identified as " + identifyFNameTxtBox.Text + " " + identifyLNameTxtBox.Text + "\nWith a score of: " + highScore);
+                        return true;
                     }
                 }
                 catch (Exception ex)
@@ -389,10 +393,12 @@ namespace mvvFacialRecognition
                     templateMatcher.IdentifyEnd();
                     facialTemplate = null;
                 }
+                return false;
             }
             catch (Exception ex)
             {
                 MessageBox.Show("" + ex);
+                return false;
             }
             finally
             {
@@ -405,6 +411,37 @@ namespace mvvFacialRecognition
                 if (templateMatcher != null)
                 {
                     templateMatcher.Dispose();
+                }
+            }
+        }
+
+        private bool createTemplate()
+        {
+            try
+            {
+                templateExtractor = new NLExtractor();
+                templateExtractor.TemplateSize = NleTemplateSize.Large;
+                templateExtractor.DetectAllFeaturePoints = true;
+                NleDetectionDetails details;// Unused
+                NleExtractionStatus extractionStatus;
+                facialTemplate = templateExtractor.Extract(grayscaleImage, out details, out extractionStatus);
+                if (extractionStatus != NleExtractionStatus.TemplateCreated)
+                {
+                    MessageBox.Show("Face Template Extraction Failed!\nPlease try a different image.");
+                    return false;
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("" + ex);
+                return false;
+            }
+            finally
+            {
+                if (templateExtractor != null)
+                {
+                    templateExtractor.Dispose();
                 }
             }
         }
