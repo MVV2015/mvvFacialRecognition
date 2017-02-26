@@ -1,0 +1,149 @@
+C:\Users\dbobeldyk\Dropbox\Capstone\mvvFacialRecognition\mvvFacialRecognition\bin\x86\Debug\mvvFacialRecognition.exe.config
+C:\Users\dbobeldyk\Dropbox\Capstone\mvvFacialRecognition\mvvFacialRecognition\bin\x86\Debug\mvvFacialRecognition.exe
+C:\Users\dbobeldyk\Dropbox\Capstone\mvvFacialRecognition\mvvFacialRecognition\bin\x86\Debug\mvvFacialRecognition.pdb
+C:\Users\dbobeldyk\Dropbox\Capstone\mvvFacialRecognition\mvvFacialRecognition\obj\x86\Debug\mvvFacialRecognition.csprojResolveAssemblyReference.cache
+C:\Users\dbobeldyk\Dropbox\Capstone\mvvFacialRecognition\mvvFacialRecognition\obj\x86\Debug\mvvFacialRecognition.mainForm.resources
+C:\Users\dbobeldyk\Dropbox\Capstone\mvvFacialRecognition\mvvFacialRecognition\obj\x86\Debug\mvvFacialRecognition.Properties.Resources.resources
+C:\Users\dbobeldyk\Dropbox\Capstone\mvvFacialRecognition\mvvFacialRecognition\obj\x86\Debug\mvvFacialRecognition.csproj.GenerateResource.Cache
+C:\Users\dbobeldyk\Dropbox\Capstone\mvvFacialRecognition\mvvFacialRecognition\obj\x86\Debug\mvvFacialRecognition.exe
+C:\Users\dbobeldyk\Dropbox\Capstone\mvvFacialRecognition\mvvFacialRecognition\obj\x86\Debug\mvvFacialRecognition.pdb
+Z:\Dropbox\Capstone\mvvFacialRecognition\mvvFacialRecognition\bin\x86\Debug\mvvFacialRecognition.exe.config
+Z:\Dropbox\Capstone\mvvFacialRecognition\mvvFacialRecognition\bin\x86\Debug\mvvFacialRecognition.exe
+Z:\Dropbox\Capstone\mvvFacialRecognition\mvvFacialRecognition\bin\x86\Debug\mvvFacialRecognition.pdb
+Z:\Dropbox\Capstone\mvvFacialRecognition\mvvFacialRecognition\bin\x86\Debug\Neurotec.Biometrics.dll
+Z:\Dropbox\Capstone\mvvFacialRecognition\mvvFacialRecognition\bin\x86\Debug\Neurotec.Devices.dll
+Z:\Dropbox\Capstone\mvvFacialRecognition\mvvFacialRecognition\bin\x86\Debug\Neurotec.dll
+Z:\Dropbox\Capstone\mvvFacialRecognition\mvvFacialRecognition\bin\x86\Debug\Neurotec.Licensing.dll
+Z:\Dropbox\Capstone\mvvFacialRecognition\mvvFacialRecognition\bin\x86\Debug\Neurotec.Media.dll
+Z:\Dropbox\Capstone\mvvFacialRecognition\mvvFacialRecognition\obj\x86\Debug\mvvFacialRecognition.mainForm.resources
+Z:\Dropbox\Capstone\mvvFacialRecognition\mvvFacialRecognition\obj\x86\Debug\mvvFacialRecognition.Properties.Resources.resources
+Z:\Dropbox\Capstone\mvvFacialRecognition\mvvFacialRecognition\obj\x86\Debug\mvvFacialRecognition.csproj.GenerateResource.Cache
+Z:\Dropbox\Capstone\mvvFacialRecognition\mvvFacialRecognition\obj\x86\Debug\mvvFacialRecognition.exe
+Z:\Dropbox\Capstone\mvvFacialRecognition\mvvFacialRecognition\obj\x86\Debug\mvvFacialRecognition.pdb
+Z:\Dropbox\Capstone\mvvFacialRecognition\mvvFacialRecognition\obj\x86\Debug\mvvFacialRecognition.csprojResolveAssemblyReference.cache
+\\vmware-host\Shared Folders\Dropbox\Capstone\mvvFacialRecognition\mvvFacialRecognition\bin\x86\Debug\mvvFacialRecognition.exe.config
+\\vmware-host\Shared Folders\Dropbox\Capstone\mvvFacialRecognition\mvvFacialRecognition\bin\x86\Debug\mvvFacialRecognition.exe
+\\vmware-host\Shared Folders\Dropbox\Capstone\mvvFacialRecognition\mvvFacialRecognition\bin\x86\Debug\mvvFacialRecognition.pdb
+\\vmware-host\Shared Folders\Dropbox\Capstone\mvvFacialRecognition\mvvFacialRecognition\bin\x86\Debug\Neurotec.Biometrics.dll
+\\vmware-host\Shared Folders\Dropbox\Capstone\mvvFacialRecognition\mvvFacialRecognition\bin\x86\Debug\Neurotec.Devices.dll
+\\vmware-host\Shared Folders\Dropbox\Capstone\mvvFacialRecognition\mvvFacialRecognition\bin\x86\Debug\Neurotec.dll
+\\vmware-host\Shared Folders\Dropbox\Capstone\mvvFacialRecognition\mvvFacialRecognition\bin\x86\Debug\Neurotec.Licensing.dll
+\\vmware-host\Shared Folders\Dropbox\Capstone\mvvFacialRecognition\mvvFacialRecognition\bin\x86\Debug\Neurotec.Media.dll
+\\vmware-host\Shared Folders\Dropbox\Capstone\mvvFacialRecognition\mvvFacialRecognition\obj\x86\Debug\mvvFacialRecognition.csprojResolveAssemblyReference.cache
+\\vmware-host\Shared Folders\Dropbox\Capstone\mvvFacialRecognition\mvvFacialRecognition\obj\x86\Debug\mvvFacialRecognition.mainForm.resources
+\\vmware-host\Shared Folders\Dropbox\Capstone\mvvFacialRecognition\mvvFacialRecognition\obj\x86\Debug\mvvFacialRecognition.Properties.Resources.resources
+\\vmware-host\Shared Folders\Dropbox\Capstone\mvvFacialRecognition\mvvFacialRecognition\obj\x86\Debug\mvvFacialRecognition.csproj.GenerateResource.Cache
+\\vmware-host\Shared Folders\Dropbox\Capstone\mvvFacialRecognition\mvvFacialRecognition\obj\x86\Debug\mvvFacialRecognition.exe
+\\vmware-host\Shared Folders\Dropbox\Capstone\mvvFacialRecognition\mvvFacialRecognition\obj\x86\Debug\mvvFacialRecognition.pdb
+C:\Users\Mark\Dropbox\Capstone\mvvFacialRecognition\mvvFacialRecognition\bin\x86\Debug\mvvFacialRecognition.exe.config
+C:\Users\Mark\Dropbox\Capstone\mvvFacialRecognition\mvvFacialRecognition\bin\x86\Debug\mvvFacialRecognition.exe
+C:\Users\Mark\Dropbox\Capstone\mvvFacialRecognition\mvvFacialRecognition\bin\x86\Debug\mvvFacialRecognition.pdb
+C:\Users\Mark\Dropbox\Capstone\mvvFacialRecognition\mvvFacialRecognition\obj\x86\Debug\mvvFacialRecognition.mainForm.resources
+C:\Users\Mark\Dropbox\Capstone\mvvFacialRecognition\mvvFacialRecognition\obj\x86\Debug\mvvFacialRecognition.Properties.Resources.resources
+C:\Users\Mark\Dropbox\Capstone\mvvFacialRecognition\mvvFacialRecognition\obj\x86\Debug\mvvFacialRecognition.csproj.GenerateResource.Cache
+C:\Users\Mark\Dropbox\Capstone\mvvFacialRecognition\mvvFacialRecognition\obj\x86\Debug\mvvFacialRecognition.exe
+C:\Users\Mark\Dropbox\Capstone\mvvFacialRecognition\mvvFacialRecognition\obj\x86\Debug\mvvFacialRecognition.pdb
+C:\Users\Mark\Dropbox\Capstone\mvvFacialRecognition\mvvFacialRecognition\obj\x86\Debug\mvvFacialRecognition.csprojResolveAssemblyReference.cache
+C:\Users\Mark\Desktop\mvvFacialRecognition\mvvFacialRecognition\bin\x86\Debug\mvvFacialRecognition.exe.config
+C:\Users\Mark\Desktop\mvvFacialRecognition\mvvFacialRecognition\bin\x86\Debug\mvvFacialRecognition.exe
+C:\Users\Mark\Desktop\mvvFacialRecognition\mvvFacialRecognition\bin\x86\Debug\mvvFacialRecognition.pdb
+C:\Users\Mark\Desktop\mvvFacialRecognition\mvvFacialRecognition\bin\x86\Debug\Neurotec.Biometrics.dll
+C:\Users\Mark\Desktop\mvvFacialRecognition\mvvFacialRecognition\bin\x86\Debug\Neurotec.Biometrics.Gui.dll
+C:\Users\Mark\Desktop\mvvFacialRecognition\mvvFacialRecognition\bin\x86\Debug\Neurotec.Biometrics.Tools.dll
+C:\Users\Mark\Desktop\mvvFacialRecognition\mvvFacialRecognition\bin\x86\Debug\Neurotec.Cluster.dll
+C:\Users\Mark\Desktop\mvvFacialRecognition\mvvFacialRecognition\bin\x86\Debug\Neurotec.Devices.dll
+C:\Users\Mark\Desktop\mvvFacialRecognition\mvvFacialRecognition\bin\x86\Debug\Neurotec.dll
+C:\Users\Mark\Desktop\mvvFacialRecognition\mvvFacialRecognition\bin\x86\Debug\Neurotec.Gui.dll
+C:\Users\Mark\Desktop\mvvFacialRecognition\mvvFacialRecognition\bin\x86\Debug\Neurotec.Licensing.dll
+C:\Users\Mark\Desktop\mvvFacialRecognition\mvvFacialRecognition\bin\x86\Debug\Neurotec.Media.dll
+C:\Users\Mark\Desktop\mvvFacialRecognition\mvvFacialRecognition\bin\x86\Debug\Neurotec.Media.Processing.dll
+C:\Users\Mark\Desktop\mvvFacialRecognition\mvvFacialRecognition\obj\x86\Debug\mvvFacialRecognition.mainForm.resources
+C:\Users\Mark\Desktop\mvvFacialRecognition\mvvFacialRecognition\obj\x86\Debug\mvvFacialRecognition.Properties.Resources.resources
+C:\Users\Mark\Desktop\mvvFacialRecognition\mvvFacialRecognition\obj\x86\Debug\mvvFacialRecognition.csproj.GenerateResource.Cache
+C:\Users\Mark\Desktop\mvvFacialRecognition\mvvFacialRecognition\obj\x86\Debug\mvvFacialRecognition.exe
+C:\Users\Mark\Desktop\mvvFacialRecognition\mvvFacialRecognition\obj\x86\Debug\mvvFacialRecognition.pdb
+D:\My Documents\Davenport\Classes Winter 2015\TECH 497 External\mvvFacialRecognition\mvvFacialRecognition\bin\x86\Debug\mvvFacialRecognition.exe.config
+D:\My Documents\Davenport\Classes Winter 2015\TECH 497 External\mvvFacialRecognition\mvvFacialRecognition\obj\x86\Debug\Interop.WMPLib.dll
+D:\My Documents\Davenport\Classes Winter 2015\TECH 497 External\mvvFacialRecognition\mvvFacialRecognition\obj\x86\Debug\AxInterop.WMPLib.dll
+D:\My Documents\Davenport\Classes Winter 2015\TECH 497 External\mvvFacialRecognition\mvvFacialRecognition\obj\x86\Debug\mvvFacialRecognition.csproj.ResolveComReference.cache
+D:\My Documents\Davenport\Classes Winter 2015\TECH 497 External\mvvFacialRecognition\mvvFacialRecognition\obj\x86\Debug\mvvFacialRecognition.exe
+D:\My Documents\Davenport\Classes Winter 2015\TECH 497 External\mvvFacialRecognition\mvvFacialRecognition\obj\x86\Debug\mvvFacialRecognition.pdb
+D:\My Documents\Davenport\Classes Winter 2015\TECH 497 External\mvvFacialRecognition\mvvFacialRecognition\bin\x86\Debug\mvvFacialRecognition.exe.manifest
+D:\My Documents\Davenport\Classes Winter 2015\TECH 497 External\mvvFacialRecognition\mvvFacialRecognition\bin\x86\Debug\mvvFacialRecognition.exe
+D:\My Documents\Davenport\Classes Winter 2015\TECH 497 External\mvvFacialRecognition\mvvFacialRecognition\bin\x86\Debug\mvvFacialRecognition.pdb
+D:\My Documents\Davenport\Classes Winter 2015\TECH 497 External\mvvFacialRecognition\mvvFacialRecognition\bin\x86\Debug\Interop.WMPLib.dll
+D:\My Documents\Davenport\Classes Winter 2015\TECH 497 External\mvvFacialRecognition\mvvFacialRecognition\bin\x86\Debug\AxInterop.WMPLib.dll
+D:\My Documents\Davenport\Classes Winter 2015\TECH 497 External\mvvFacialRecognition\mvvFacialRecognition\bin\x86\Debug\wmp.dll
+D:\My Documents\Davenport\Classes Winter 2015\TECH 497 External\mvvFacialRecognition\mvvFacialRecognition\obj\x86\Debug\mvvFacialRecognition.mainForm.resources
+D:\My Documents\Davenport\Classes Winter 2015\TECH 497 External\mvvFacialRecognition\mvvFacialRecognition\obj\x86\Debug\mvvFacialRecognition.Properties.Resources.resources
+D:\My Documents\Davenport\Classes Winter 2015\TECH 497 External\mvvFacialRecognition\mvvFacialRecognition\obj\x86\Debug\mvvFacialRecognition.csproj.GenerateResource.Cache
+D:\My Documents\Davenport\Classes Winter 2015\TECH 497 External\mvvFacialRecognition\mvvFacialRecognition\obj\x86\Debug\mvvFacialRecognition.exe.manifest
+C:\Users\Mark\Desktop\mvvFacialRecognition\mvvFacialRecognition\mvvFacialRecognition\bin\x86\Debug\mvvFacialRecognition.exe.config
+C:\Users\Mark\Desktop\mvvFacialRecognition\mvvFacialRecognition\mvvFacialRecognition\bin\x86\Debug\mvvFacialRecognition.exe.manifest
+C:\Users\Mark\Desktop\mvvFacialRecognition\mvvFacialRecognition\mvvFacialRecognition\bin\x86\Debug\mvvFacialRecognition.exe
+C:\Users\Mark\Desktop\mvvFacialRecognition\mvvFacialRecognition\mvvFacialRecognition\bin\x86\Debug\mvvFacialRecognition.pdb
+C:\Users\Mark\Desktop\mvvFacialRecognition\mvvFacialRecognition\mvvFacialRecognition\bin\x86\Debug\Neurotec.Biometrics.dll
+C:\Users\Mark\Desktop\mvvFacialRecognition\mvvFacialRecognition\mvvFacialRecognition\bin\x86\Debug\Neurotec.Biometrics.Gui.dll
+C:\Users\Mark\Desktop\mvvFacialRecognition\mvvFacialRecognition\mvvFacialRecognition\bin\x86\Debug\Neurotec.Biometrics.Tools.dll
+C:\Users\Mark\Desktop\mvvFacialRecognition\mvvFacialRecognition\mvvFacialRecognition\bin\x86\Debug\Neurotec.Cluster.dll
+C:\Users\Mark\Desktop\mvvFacialRecognition\mvvFacialRecognition\mvvFacialRecognition\bin\x86\Debug\Neurotec.Devices.dll
+C:\Users\Mark\Desktop\mvvFacialRecognition\mvvFacialRecognition\mvvFacialRecognition\bin\x86\Debug\Neurotec.dll
+C:\Users\Mark\Desktop\mvvFacialRecognition\mvvFacialRecognition\mvvFacialRecognition\bin\x86\Debug\Neurotec.Gui.dll
+C:\Users\Mark\Desktop\mvvFacialRecognition\mvvFacialRecognition\mvvFacialRecognition\bin\x86\Debug\Neurotec.Licensing.dll
+C:\Users\Mark\Desktop\mvvFacialRecognition\mvvFacialRecognition\mvvFacialRecognition\bin\x86\Debug\Neurotec.Media.dll
+C:\Users\Mark\Desktop\mvvFacialRecognition\mvvFacialRecognition\mvvFacialRecognition\bin\x86\Debug\Neurotec.Media.Processing.dll
+C:\Users\Mark\Desktop\mvvFacialRecognition\mvvFacialRecognition\mvvFacialRecognition\bin\x86\Debug\Interop.WMPLib.dll
+C:\Users\Mark\Desktop\mvvFacialRecognition\mvvFacialRecognition\mvvFacialRecognition\bin\x86\Debug\AxInterop.WMPLib.dll
+C:\Users\Mark\Desktop\mvvFacialRecognition\mvvFacialRecognition\mvvFacialRecognition\bin\x86\Debug\wmp.dll
+C:\Users\Mark\Desktop\mvvFacialRecognition\mvvFacialRecognition\mvvFacialRecognition\obj\x86\Debug\Interop.WMPLib.dll
+C:\Users\Mark\Desktop\mvvFacialRecognition\mvvFacialRecognition\mvvFacialRecognition\obj\x86\Debug\AxInterop.WMPLib.dll
+C:\Users\Mark\Desktop\mvvFacialRecognition\mvvFacialRecognition\mvvFacialRecognition\obj\x86\Debug\mvvFacialRecognition.csproj.ResolveComReference.cache
+C:\Users\Mark\Desktop\mvvFacialRecognition\mvvFacialRecognition\mvvFacialRecognition\obj\x86\Debug\mvvFacialRecognition.mainForm.resources
+C:\Users\Mark\Desktop\mvvFacialRecognition\mvvFacialRecognition\mvvFacialRecognition\obj\x86\Debug\mvvFacialRecognition.Properties.Resources.resources
+C:\Users\Mark\Desktop\mvvFacialRecognition\mvvFacialRecognition\mvvFacialRecognition\obj\x86\Debug\mvvFacialRecognition.csproj.GenerateResource.Cache
+C:\Users\Mark\Desktop\mvvFacialRecognition\mvvFacialRecognition\mvvFacialRecognition\obj\x86\Debug\mvvFacialRecognition.exe.manifest
+C:\Users\Mark\Desktop\mvvFacialRecognition\mvvFacialRecognition\mvvFacialRecognition\obj\x86\Debug\mvvFacialRecognition.exe
+C:\Users\Mark\Desktop\mvvFacialRecognition\mvvFacialRecognition\mvvFacialRecognition\obj\x86\Debug\mvvFacialRecognition.pdb
+C:\Users\Mark\Desktop\Capstone Project\mvvFacialRecognition\mvvFacialRecognition\bin\x86\Debug\mvvFacialRecognition.exe.config
+C:\Users\Mark\Desktop\Capstone Project\mvvFacialRecognition\mvvFacialRecognition\bin\x86\Debug\mvvFacialRecognition.exe
+C:\Users\Mark\Desktop\Capstone Project\mvvFacialRecognition\mvvFacialRecognition\bin\x86\Debug\mvvFacialRecognition.pdb
+C:\Users\Mark\Desktop\Capstone Project\mvvFacialRecognition\mvvFacialRecognition\bin\x86\Debug\Neurotec.Biometrics.dll
+C:\Users\Mark\Desktop\Capstone Project\mvvFacialRecognition\mvvFacialRecognition\bin\x86\Debug\Neurotec.Biometrics.Tools.dll
+C:\Users\Mark\Desktop\Capstone Project\mvvFacialRecognition\mvvFacialRecognition\bin\x86\Debug\Neurotec.Cluster.dll
+C:\Users\Mark\Desktop\Capstone Project\mvvFacialRecognition\mvvFacialRecognition\bin\x86\Debug\Neurotec.Devices.dll
+C:\Users\Mark\Desktop\Capstone Project\mvvFacialRecognition\mvvFacialRecognition\bin\x86\Debug\Neurotec.dll
+C:\Users\Mark\Desktop\Capstone Project\mvvFacialRecognition\mvvFacialRecognition\bin\x86\Debug\Neurotec.Licensing.dll
+C:\Users\Mark\Desktop\Capstone Project\mvvFacialRecognition\mvvFacialRecognition\bin\x86\Debug\Neurotec.Media.dll
+C:\Users\Mark\Desktop\Capstone Project\mvvFacialRecognition\mvvFacialRecognition\bin\x86\Debug\Neurotec.Media.Processing.dll
+C:\Users\Mark\Desktop\Capstone Project\mvvFacialRecognition\mvvFacialRecognition\bin\x86\Debug\Interop.WMPLib.dll
+C:\Users\Mark\Desktop\Capstone Project\mvvFacialRecognition\mvvFacialRecognition\bin\x86\Debug\AxInterop.WMPLib.dll
+C:\Users\Mark\Desktop\Capstone Project\mvvFacialRecognition\mvvFacialRecognition\obj\x86\Debug\Interop.WMPLib.dll
+C:\Users\Mark\Desktop\Capstone Project\mvvFacialRecognition\mvvFacialRecognition\obj\x86\Debug\AxInterop.WMPLib.dll
+C:\Users\Mark\Desktop\Capstone Project\mvvFacialRecognition\mvvFacialRecognition\obj\x86\Debug\mvvFacialRecognition.csproj.ResolveComReference.cache
+C:\Users\Mark\Desktop\Capstone Project\mvvFacialRecognition\mvvFacialRecognition\obj\x86\Debug\mvvFacialRecognition.mainForm.resources
+C:\Users\Mark\Desktop\Capstone Project\mvvFacialRecognition\mvvFacialRecognition\obj\x86\Debug\mvvFacialRecognition.Properties.Resources.resources
+C:\Users\Mark\Desktop\Capstone Project\mvvFacialRecognition\mvvFacialRecognition\obj\x86\Debug\mvvFacialRecognition.csproj.GenerateResource.Cache
+C:\Users\Mark\Desktop\Capstone Project\mvvFacialRecognition\mvvFacialRecognition\obj\x86\Debug\mvvFacialRecognition.exe
+C:\Users\Mark\Desktop\Capstone Project\mvvFacialRecognition\mvvFacialRecognition\obj\x86\Debug\mvvFacialRecognition.pdb
+C:\Users\Mark\Desktop\Capstone Project\mvvFacialRecognitionKeeper\mvvFacialRecognition\bin\x86\Debug\mvvFacialRecognition.exe.config
+C:\Users\Mark\Desktop\Capstone Project\mvvFacialRecognitionKeeper\mvvFacialRecognition\obj\x86\Debug\Interop.WMPLib.dll
+C:\Users\Mark\Desktop\Capstone Project\mvvFacialRecognitionKeeper\mvvFacialRecognition\obj\x86\Debug\AxInterop.WMPLib.dll
+C:\Users\Mark\Desktop\Capstone Project\mvvFacialRecognitionKeeper\mvvFacialRecognition\obj\x86\Debug\mvvFacialRecognition.csproj.ResolveComReference.cache
+C:\Users\Mark\Desktop\Capstone Project\mvvFacialRecognitionKeeper\mvvFacialRecognition\obj\x86\Debug\mvvFacialRecognition.exe
+C:\Users\Mark\Desktop\Capstone Project\mvvFacialRecognitionKeeper\mvvFacialRecognition\obj\x86\Debug\mvvFacialRecognition.pdb
+C:\Users\Mark\Desktop\Capstone Project\mvvFacialRecognitionKeeper\mvvFacialRecognition\bin\x86\Debug\mvvFacialRecognition.exe
+C:\Users\Mark\Desktop\Capstone Project\mvvFacialRecognitionKeeper\mvvFacialRecognition\bin\x86\Debug\mvvFacialRecognition.pdb
+C:\Users\Mark\Desktop\Capstone Project\mvvFacialRecognitionKeeper\mvvFacialRecognition\bin\x86\Debug\Neurotec.Biometrics.dll
+C:\Users\Mark\Desktop\Capstone Project\mvvFacialRecognitionKeeper\mvvFacialRecognition\bin\x86\Debug\Neurotec.Biometrics.Tools.dll
+C:\Users\Mark\Desktop\Capstone Project\mvvFacialRecognitionKeeper\mvvFacialRecognition\bin\x86\Debug\Neurotec.Cluster.dll
+C:\Users\Mark\Desktop\Capstone Project\mvvFacialRecognitionKeeper\mvvFacialRecognition\bin\x86\Debug\Neurotec.Devices.dll
+C:\Users\Mark\Desktop\Capstone Project\mvvFacialRecognitionKeeper\mvvFacialRecognition\bin\x86\Debug\Neurotec.dll
+C:\Users\Mark\Desktop\Capstone Project\mvvFacialRecognitionKeeper\mvvFacialRecognition\bin\x86\Debug\Neurotec.Licensing.dll
+C:\Users\Mark\Desktop\Capstone Project\mvvFacialRecognitionKeeper\mvvFacialRecognition\bin\x86\Debug\Neurotec.Media.dll
+C:\Users\Mark\Desktop\Capstone Project\mvvFacialRecognitionKeeper\mvvFacialRecognition\bin\x86\Debug\Neurotec.Media.Processing.dll
+C:\Users\Mark\Desktop\Capstone Project\mvvFacialRecognitionKeeper\mvvFacialRecognition\bin\x86\Debug\Interop.WMPLib.dll
+C:\Users\Mark\Desktop\Capstone Project\mvvFacialRecognitionKeeper\mvvFacialRecognition\bin\x86\Debug\AxInterop.WMPLib.dll
+C:\Users\Mark\Desktop\Capstone Project\mvvFacialRecognitionKeeper\mvvFacialRecognition\obj\x86\Debug\mvvFacialRecognition.csprojResolveAssemblyReference.cache
+C:\Users\Mark\Desktop\Capstone Project\mvvFacialRecognitionKeeper\mvvFacialRecognition\obj\x86\Debug\mvvFacialRecognition.mainForm.resources
+C:\Users\Mark\Desktop\Capstone Project\mvvFacialRecognitionKeeper\mvvFacialRecognition\obj\x86\Debug\mvvFacialRecognition.Properties.Resources.resources
+C:\Users\Mark\Desktop\Capstone Project\mvvFacialRecognitionKeeper\mvvFacialRecognition\obj\x86\Debug\mvvFacialRecognition.csproj.GenerateResource.Cache

@@ -3,16 +3,13 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Security.Cryptography;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 
 using Neurotec.Biometrics;
-using Neurotec.Images;
 
 namespace mvvFacialRecognition
 {
-    class cryptography
+	class cryptography
     {
         int byteCount = 0;
 
@@ -34,10 +31,10 @@ namespace mvvFacialRecognition
             return Encoding.UTF8.GetString(decryptedString, 0, byteCount);
         }
 
-        internal byte[] encryptImage(NImage image)
+        internal byte[] encryptImage(Bitmap image)
         {
             MemoryStream myStream = new MemoryStream();
-            image.ToBitmap().Save(myStream, ImageFormat.Bmp);
+            image.Save(myStream, ImageFormat.Bmp);
             byte[] imageBytes = new byte[myStream.Length];
             myStream.Position = 0;
             myStream.Read(imageBytes, 0, imageBytes.Length);
@@ -45,13 +42,13 @@ namespace mvvFacialRecognition
             return encryptedImage;
         }
 
-        //internal byte[] encryptTemplate(NLTemplate template)
-        //{
-        //    //byte[] templateArray = template.Save().CopyTo(templateArray);
-        //    //byte[] encryptedTemplate = EncryptBytes(templateArray, "damelon");
-        //    //return encryptedTemplate;
-            
-        //}
+        internal byte[] encryptTemplate(NLTemplate template)
+        {
+            byte[] templateArray = template.Save().ToByteArray();
+            byte[] encryptedTemplate = EncryptBytes(templateArray, "damelon");
+            return encryptedTemplate;
+
+        }
 
         public Image decryptImage(byte[] encryptedFile)
         {

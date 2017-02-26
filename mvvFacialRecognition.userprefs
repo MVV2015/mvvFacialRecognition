@@ -1,0 +1,18 @@
+﻿<Properties StartupConfiguration="{90F19901-57DC-41B6-9CB4-A54FE6BAA952}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="mvvFacialRecognition Status">
+    <Files>
+      <File FileName="mvvFacialRecognition/mainForm.cs" Line="795" Column="39" />
+      <File FileName="mvvFacialRecognition Status" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.ItemProperties.mvvFacialRecognition PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches>
+    <Watch file="../../Desktop/Shared/School/Completed Courses/Projects/messingAround/messingAround/Program.cs" line="26" offsetX="379" offsetY="375" expression="y" liveUpdate="False" />
+    <Watch file="../../Desktop/Shared/School/Completed Courses/Projects/messingAround/messingAround/Program.cs" line="24" offsetX="401" offsetY="345" expression="x" liveUpdate="False" />
+    <Watch file="../../Desktop/Shared/School/Completed Courses/Projects/messingAround/messingAround/Program.cs" line="65" offsetX="371" offsetY="1024" expression="tempVal" liveUpdate="False" />
+  </MonoDevelop.Ide.DebuggingService.PinnedWatches>
+</Properties>

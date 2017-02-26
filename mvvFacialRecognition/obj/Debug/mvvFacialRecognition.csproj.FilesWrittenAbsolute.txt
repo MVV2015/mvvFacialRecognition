@@ -1,0 +1,9 @@
+/Users/markvanvleet/Projects/mvvFacialRecognition/mvvFacialRecognition/obj/Debug/.NETFramework,Version=v4.5.AssemblyAttribute.cs
+/Users/markvanvleet/Projects/mvvFacialRecognition/mvvFacialRecognition/bin/Debug/Neurotec.dll
+/Users/markvanvleet/Projects/mvvFacialRecognition/mvvFacialRecognition/bin/Debug/Neurotec.Biometrics.dll
+/Users/markvanvleet/Projects/mvvFacialRecognition/mvvFacialRecognition/bin/Debug/Neurotec.Biometrics.Tools.dll
+/Users/markvanvleet/Projects/mvvFacialRecognition/mvvFacialRecognition/bin/Debug/Neurotec.Cluster.dll
+/Users/markvanvleet/Projects/mvvFacialRecognition/mvvFacialRecognition/bin/Debug/Neurotec.Devices.dll
+/Users/markvanvleet/Projects/mvvFacialRecognition/mvvFacialRecognition/bin/Debug/Neurotec.Licensing.dll
+/Users/markvanvleet/Projects/mvvFacialRecognition/mvvFacialRecognition/bin/Debug/Neurotec.Media.dll
+/Users/markvanvleet/Projects/mvvFacialRecognition/mvvFacialRecognition/bin/Debug/Neurotec.Media.Processing.dll

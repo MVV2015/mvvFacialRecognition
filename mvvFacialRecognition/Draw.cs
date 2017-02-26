@@ -1,55 +1,71 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Drawing;
 
 using Neurotec.Biometrics;
-using Neurotec.Biometrics.Gui;
 
 namespace mvvFacialRecognition
 {
-    
-    class Draw
-    {
-        //Bitmap myImage;
-        Graphics g;
-        Font myFont = new Font("Microsoft Sans Serif",(float)8);
 
+	class Draw
+    {
+        Graphics g;
+        Font myFont = new Font("Microsoft Sans Serif",(float)12, FontStyle.Bold);
         public Draw()
         {
         }
 
-        internal Bitmap drawFaceRectangle(NleFace thisFace, Bitmap myImage, int confScore, Pen p)
+        internal Bitmap drawFaceRectangle(NleDetectionDetails thisFace, Bitmap myImage, Pen p)
         {
             g = Graphics.FromImage(myImage);
-            g.DrawRectangle(p, thisFace.Rectangle.X, thisFace.Rectangle.Y, thisFace.Rectangle.Width, thisFace.Rectangle.Height);
-            g.DrawString(("Confidence Score: " + confScore), myFont, p.Brush, thisFace.Rectangle.Left, thisFace.Rectangle.Bottom);
+            g.DrawRectangle(p, thisFace.Face.Rectangle.X, thisFace.Face.Rectangle.Y, thisFace.Face.Rectangle.Width, thisFace.Face.Rectangle.Height);
+            g.Dispose();
             return myImage;
         }
-        //Image iSource = Image.FromFile(@"c:\users\tamer\desktop\a.jpg");//load the orginal file
-        //    int width = 100;//determine the width of the area will be copied
-        //    int height = 100;//determine the height of the area will be copied 
-        //    Image iNew = new Bitmap(width, height);//create a new image
-        //    Graphics g = Graphics.FromImage(iNew);//create graphics object
-        //    Rectangle destRect = new Rectangle(0, 0, iNew.Width, iNew.Height);//create destination rectangle
-        //    Rectangle srcRect = new Rectangle(50, 100, width, height);//get from (50,100) to (150,200). source rectangle
-        //    g.DrawImage(iSource, destRect, srcRect, GraphicsUnit.Pixel);//draw image
-        //    iNew.Save(@"c:\users\tamer\desktop\a2.jpg");//save new image
-        //    g.Dispose();//dispose graphics
 
-        internal Image snipFace(Bitmap bmp, NleDetectionDetails[] nleDetectionDetails, Pen p)
+        internal Bitmap drawInsetRectangle(NleDetectionDetails thisFace, Bitmap myImage, Pen p)
         {
-            int _width = (int)(nleDetectionDetails[0].Face.Rectangle.Width * 2);
-            int _height = (int)(nleDetectionDetails[0].Face.Rectangle.Height * 2);
-            Image snippedImage = new Bitmap(_width, _height);
+            // This is a duplicate of drawFaceRectangle() above. It is here because of occational crossthreading conflicts. (needs to be an async method)
+            g = Graphics.FromImage(myImage);
+            g.DrawRectangle(p, thisFace.Face.Rectangle.X, thisFace.Face.Rectangle.Y, thisFace.Face.Rectangle.Width, thisFace.Face.Rectangle.Height);
+            g.Dispose();
+            return myImage;
+        }
+
+        internal Bitmap snipFace(Bitmap myImage, NleDetectionDetails nleDetectionDetails)
+        {
+            int _width = (int)(nleDetectionDetails.Face.Rectangle.Width * 2);
+            int _height = (int)(nleDetectionDetails.Face.Rectangle.Height * 2);
+            Bitmap snippedImage = new Bitmap(_width, _height);
             g = Graphics.FromImage(snippedImage);
             Rectangle destination = new Rectangle(0, 0, _width, _height);
-            Rectangle source = new Rectangle((nleDetectionDetails[0].Face.Rectangle.X - _width / 4),
-                (nleDetectionDetails[0].Face.Rectangle.Y - _height / 4), _width, _height);
-            g.DrawImage(bmp, destination, source, GraphicsUnit.Pixel);
+            Rectangle source = new Rectangle((nleDetectionDetails.Face.Rectangle.X - _width / 4),
+                (nleDetectionDetails.Face.Rectangle.Y - _height / 4), _width, _height);
+            g.DrawImage(myImage, destination, source, GraphicsUnit.Pixel);
+            g.Dispose();
             return snippedImage;
+        }
+
+        internal Bitmap connect(Bitmap fullImage, Point point1, Point point2, Pen P)
+        {            
+            g = Graphics.FromImage(fullImage);
+            g.DrawLine(P, point1, point2);
+            g.Dispose();
+            return fullImage;
+        }
+
+        internal Bitmap confidence(Bitmap liveBmp, int score, Point myPoint, Pen myPen)
+        {
+            g = Graphics.FromImage(liveBmp);
+            g.DrawString(score.ToString(), myFont, myPen.Brush, myPoint);
+            g.Dispose();
+            return liveBmp;
+        }
+
+        internal Bitmap faceConfidence(Bitmap liveBmp, int score, Point myPoint, Pen myPen)
+        {
+            g = Graphics.FromImage(liveBmp);
+            g.DrawString("Conf "+ score.ToString(), myFont, myPen.Brush, myPoint);
+            g.Dispose();
+            return liveBmp;
         }
     }
 }
